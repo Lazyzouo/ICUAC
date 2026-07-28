@@ -1,0 +1,17 @@
+cff-version: 1.2.0
+message: "If you use ICUAC, please cite the project repository. / 使用 ICUAC 时请引用项目仓库。"
+title: ICUAC
+type: software
+authors:
+  - family-names: Lazyz
+repository-code: "https://github.com/Lazyzouo/ICUAC"
+url: "https://github.com/Lazyzouo/ICUAC"
+license: MIT
+version: 2.0.0
+date-released: 2026-07-29
+keywords:
+  - minecraft
+  - paper
+  - folia
+  - security
+  - anti-cheat

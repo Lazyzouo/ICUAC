@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Questions and configuration / 问题与配置
+    url: https://github.com/Lazyzouo/ICUAC/discussions
+    about: Use Discussions for support that is not a reproducible bug. / 非可复现错误请使用讨论区。
+  - name: Security vulnerability / 安全漏洞
+    url: https://github.com/Lazyzouo/ICUAC/security
+    about: Report vulnerabilities privately. / 请私密报告漏洞。

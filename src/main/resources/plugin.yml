@@ -1,0 +1,33 @@
+name: ${pluginName}
+version: '${pluginVersion}'
+author: '${pluginAuthor}'
+main: com.icu.icuac.ICUAC
+api-version: '1.21'
+folia-supported: true
+prefix: ICUAC
+website: https://github.com/Lazyzouo/ICUAC
+description: Unified command protection and security core / 统一指令拦截与安全核心
+
+commands:
+  icuac:
+    description: ICUAC administration / ICUAC 管理命令
+    usage: /icuac <add|remove|list|reload>
+    permission: icuac.admin
+  crystalreload:
+    description: Reload crystal interval / 重载水晶攻击间隔
+    usage: /crystalreload
+  crystallimit:
+    description: Toggle crystal cooldown bypass / 切换水晶冷却绕过
+    usage: /crystallimit bypass
+
+permissions:
+  icuac.admin:
+    description: ICUAC administration / ICUAC 管理权限
+    default: op
+  icuac.bypass:
+    description: Bypass command protection / 绕过命令防护
+    default: false
+  crystalpvp.reload:
+    default: op
+  crystalpvp.limit:
+    default: op

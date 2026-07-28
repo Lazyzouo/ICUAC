@@ -1,0 +1,27 @@
+name: Feature request / 功能建议
+description: Propose an ICUAC improvement / 建议 ICUAC 改进
+title: "[Feature] "
+labels: ["enhancement", "needs-triage"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem / 问题
+      description: What server administration or security problem should be solved?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed behavior / 建议行为
+    validations:
+      required: true
+  - type: textarea
+    id: risks
+    attributes:
+      label: Security, compatibility, and migration impact / 安全、兼容与迁移影响
+  - type: input
+    id: environment
+    attributes:
+      label: Target environment / 目标环境
+      placeholder: "Paper/Folia 1.21.11, Java 21"

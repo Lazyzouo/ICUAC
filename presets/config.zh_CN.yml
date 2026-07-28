@@ -1,0 +1,296 @@
+# ============================================================================ #
+#                                                                              #
+#                                  ICUAC 安全插件                              #
+#                                                                              #
+# ============================================================================ #
+
+# 用户界面语言：zh_CN（简体中文）或 en_US（English）
+language: zh_CN
+
+# GitHub 自动更新；发现新版本后下载到服务器 update 目录，并在下次重启时安装
+updates:
+  enabled: true
+  auto-download: true
+
+# ============================================================================ #
+#                              [0] 全局设置 (Global Settings)                  #
+# ============================================================================ #
+global-settings:
+  # 全局背包安全检查的频率，单位为 Tick (20 ticks = 1秒)
+  # 默认 1L 表示每 Tick 检查一次。如果服务器人数较多，可调大至 5 或 10 减少性能消耗。
+  inventory-check-interval-ticks: 1
+
+# CrystalPVP 原始配置：玩家攻击末地水晶的最短间隔（毫秒）
+crystal:
+  hit-interval: 200
+
+# ============================================================================ #
+#                              [1] 命令防护 (Command)                          #
+# ============================================================================ #
+# 是否启用命令拦截功能
+command-blocking-enabled: true
+# 嵌套命令（如 /execute as @a run ...）的最大解析深度。防止玩家利用多层嵌套卡服。
+command-blocking-max-depth: 4
+# 禁止普通玩家使用的命令列表
+blocked-commands:
+  - kill
+  - effect
+# 是否在玩家输入时，自动在 Tab 补全中隐藏被拦截的命令
+hide-blocked-commands-from-tab: true
+# 是否允许拥有 icuac.bypass 权限的玩家绕过命令拦截
+permission-bypass-enabled: false
+# 是否拦截命令方块执行上述危险命令
+block-command-blocks: true
+# 是否拦截控制台执行上述危险命令
+block-console-commands: false
+
+# ============================================================================ #
+#                              [2] 创造模式保护 (GameMode Guard)               #
+# ============================================================================ #
+creative-world-whitelist:
+  # 是否开启世界创造模式隔离（防止玩家将创造模式带入生存世界）
+  enabled: true
+  # 检查间隔时间，单位为 Tick
+  check-interval-ticks: 20
+  # 允许保持创造模式的世界列表（白名单）
+  worlds:
+    - creative_world
+  # 需要被监控的游戏模式（默认监控创造模式）
+  source-game-modes:
+    - CREATIVE
+  # 忽略监控的游戏模式（默认忽略旁观模式）
+  ignored-game-modes:
+    - SPECTATOR
+  # 如果玩家在非白名单世界处于上述模式，将被强制切换为该模式：
+  target-game-mode: SURVIVAL
+  # 是否在控制台记录玩家的游戏模式强制切换日志
+  log-switches: true
+
+# ============================================================================ #
+#                              [3] 环境与违禁品 (Environment)                  #
+# ============================================================================ #
+features:
+  prevent-below-bedrock:
+    # 是否防止玩家掉出基岩层（虚空防卡/秒杀）
+    enabled: true
+    # 主世界/普通世界的虚空判定高度
+    threshold-normal: -65.0
+    # 下界/末地等特殊世界的虚空判定高度
+    threshold-nether: -1.0
+  prevent-above-nether-bedrock:
+    # 是否防止玩家上地狱基岩顶
+    enabled: true
+    # 判定玩家处于地狱顶的高度阈值
+    threshold: 127
+    # 启用该判定的世界名称
+    worlds:
+      - world_nether
+  # 死亡掉落物控制
+  death-drop-control:
+    enabled: true
+    # 在以下世界中死亡时，绝对不会产生任何掉落物（强制清空物品与经验掉落）
+    no-drop-worlds: []
+
+# 服务器全局禁用的物品列表（玩家放入背包、拿到手上均会被自动没收）
+banned-items:
+  - COMMAND_BLOCK
+  - COMMAND_BLOCK_MINECART
+  - REPEATING_COMMAND_BLOCK
+  - CHAIN_COMMAND_BLOCK
+  - BARRIER
+  - STRUCTURE_BLOCK
+  - STRUCTURE_VOID
+  - LIGHT
+  - JIGSAW
+  - SPAWNER
+  - BEDROCK
+  - END_PORTAL_FRAME
+  - END_GATEWAY
+  - ENCHANTED_GOLDEN_APPLE
+  - TNT
+
+# ============================================================================ #
+#                              [4] 药水与堆叠 (Effects & Stack)                #
+# ============================================================================ #
+illegal-effects-settings:
+  # 是否检查药水效果持续时间
+  check-duration: true
+  # 允许的药水最大持续时间 (12000 ticks = 10分钟)
+  max-duration-ticks: 12000
+  # 是否检查药水效果等级
+  check-level: true
+  # 单独指定的特殊药水等级上限 (真实等级 = 设置值 + 1，如 4 代表 V级)
+  specific-level-limits:
+    DAMAGE_RESISTANCE: 4
+  # 其他未明确指出的药水的全局默认最高等级 (10 即 XI级)
+  default-level-fallback: 10
+  # 各种常见药水效果的默认上限 (3 代表 IV 级)
+  default-level-limits:
+    SLOW: 7
+    RESISTANCE: 5
+    SPEED: 3
+    HASTE: 3
+    STRENGTH: 3
+    JUMP: 3
+    REGENERATION: 3
+    FIRE_RESISTANCE: 3
+    WATER_BREATHING: 3
+    INVISIBILITY: 3
+    NIGHT_VISION: 3
+    HEALTH_BOOST: 3
+    ABSORPTION: 3
+    SATURATION: 3
+    GLOWING: 3
+    LEVITATION: 3
+    LUCK: 3
+    SLOW_FALLING: 3
+    CONDUIT_POWER: 3
+    DOLPHINS_GRACE: 3
+    BAD_OMEN: 3
+    HERO_OF_THE_VILLAGE: 3
+    MINING_FATIGUE: 3
+    CONFUSION: 3
+    BLINDNESS: 3
+    HUNGER: 3
+    WEAKNESS: 3
+    POISON: 3
+    WITHER: 3
+    UNLUCK: 3
+
+illegal-stack-settings:
+  # 是否修复非法堆叠（例如 99 个钻石剑，会自动恢复为 1）
+  enabled: true
+
+# ============================================================================ #
+#                              [5] NBT安全检查 (NBT Security)                  #
+# ============================================================================ #
+nbt-settings:
+  # 是否启用全方位 NBT 检查
+  enabled: true
+  # 是否检查物品序列化后的大小（防崩服物品）
+  check-serialized-size: true
+  max-serialized-bytes: 65536
+  # 是否检查 NBT 字符串长度
+  check-meta-string-size: true
+  max-meta-string-length: 16384
+  # 是否检查被封禁的 NBT 关键字
+  check-banned-keywords: true
+  banned-meta-keywords:
+    - minecraft:custom_data
+    - minecraft:attribute_modifiers
+    - minecraft:entity_data
+    - minecraft:bucket_entity_data
+    - minecraft:block_entity_data
+    - minecraft:debug_stick_state
+    - minecraft:creative_slot_lock
+  # PDC (持久化数据) 检查参数
+  check-persistent-data: true
+  max-persistent-data-keys: 16
+  max-persistent-data-bytes: 4096
+  # 物品显示文本 (Name/Lore) 检查
+  check-text: true
+  max-display-name-length: 128
+  max-lore-lines: 20
+  max-lore-line-length: 256
+  # 属性修饰符检查 (防万攻剑)
+  check-attribute-modifiers: true
+  max-attribute-modifiers: 16
+  max-attribute-amount: 1024.0
+  max-attribute-amounts:
+    ATTACK_SPEED: 32.0
+    ATTACK_DAMAGE: 256.0
+    MOVEMENT_SPEED: 4.0
+    FLYING_SPEED: 4.0
+    STEP_HEIGHT: 10.0
+    SCALE: 16.0
+    ENTITY_INTERACTION_RANGE: 64.0
+    BLOCK_INTERACTION_RANGE: 64.0
+  # 不安全标签限制（如果开启，携带此类 NBT 的物品将被没收）
+  unsafe-flags:
+    block-attribute-modifiers: true
+    block-unbreakable: true
+    block-hide-tooltip: true
+    block-custom-model-data: true
+    block-custom-max-stack-size: true
+    block-fire-resistant: true
+    block-rarity: true
+  # 是否检查潜影盒/收纳袋内的嵌套物品（防俄罗斯套娃崩服）
+  check-nested-items: true
+  # 允许的最大嵌套深度
+  max-nested-depth: 2
+
+# ============================================================================ #
+#                              [6] 消息提示 (Messages)                         #
+# ============================================================================ #
+messages:
+  # 插件全局消息前缀
+  prefix: '&#00D2FF&l[&#3A7BD5&lICUAC&#00D2FF&l] &8&l» &7'
+  # 无权限提示
+  deny-message: '{prefix}&8[&cX&8] &c&l拒绝访问 &8| &7你没有权限执行此操作。'
+
+  # --- 命令相关提示 ---
+  command-add-usage: '{prefix}&8[&e!&8] &e&l参数错误 &8| &7用法: &f/icuac add <玩家ID>'
+  command-remove-usage: '{prefix}&8[&e!&8] &e&l参数错误 &8| &7用法: &f/icuac remove <玩家ID>'
+  reload-success: '{prefix}&8[&a+&8] &a&l重载完成 &8| &7配置文件与全部安全组件已重新加载。'
+  crystal-limit-usage: '{prefix}&8[&e!&8] &e&l参数错误 &8| &7用法: &f/crystallimit bypass'
+  crystal-limit-bypassed: '{prefix}&8[&a+&8] &a&l限制解除 &8| &7你已绕过末地水晶攻击间隔限制。'
+  crystal-limit-restored: '{prefix}&8[&e!&8] &e&l限制恢复 &8| &7你将重新受到末地水晶攻击间隔限制。'
+  unknown-command: '&c未知指令。请输入 "/help" 查看帮助。'
+  crystal-reload-success: '{prefix}&8[&a+&8] &a&l重载完成 &8| &7当前水晶攻击间隔: &f{interval}ms'
+  update-checking: '正在检查 GitHub 新版本...'
+  update-latest: '当前版本 {version} 已经是最新版本。'
+  update-available: '发现新版本 {latest}，当前版本为 {current}。'
+  update-downloaded: '新版本 {version} 已下载，将在下次服务器重启时安装。'
+  update-failed: '自动更新失败：{reason}。请前往 {url} 手动下载。'
+  update-manual: '新版本 {version} 可用，请前往 {url} 下载。'
+
+  # 帮助菜单（沿用 WRTP 的分区逻辑，采用 ICUAC 独立的安全控制台样式）
+  help-menu:
+    - '&#FF5E62--------&#FF9966--------&#F2C94C ✧ &#FF9966--------&#FF5E62--------'
+    - '   &#FF5E62&l{name} &8┃ &7版本 &f&l{version} &8┃ &7作者 &#F2C94C&l{author}'
+    - '&#FF5E62-------&#FF9966-------&#F2C94C-------&#FF9966-------&#FF5E62-------'
+    - '&#FF5E62&l[01] &#F2C94C&l白名单管控'
+    - '  &#FF9966› &f/icuac add <玩家> &8- &7添加安全检查豁免'
+    - '  &#FF9966› &f/icuac remove <玩家> &8- &7移除安全检查豁免'
+    - '  &#FF9966› &f/icuac list &8- &7查看当前白名单'
+    - '&#FF5E62&l[02] &#F2C94C&l插件维护'
+    - '  &#FF9966› &f/crystallimit bypass &8- &7切换水晶攻击间隔限制'
+    - '  &#FF9966› &f/crystalreload &8- &7重载水晶攻击间隔配置'
+    - '  &#FF9966› &f/icuac reload &8- &7重载配置与安全组件'
+    - '  &#FF9966› &f/icuac help &8- &7显示本帮助菜单'
+    - '&#FF5E62--------&#FF9966--------&#F2C94C ✧ &#FF9966--------&#FF5E62--------'
+
+  # 白名单操作提示
+  whitelist-add-message: '{prefix}&8[&a+&8] &a&l添加成功 &8| &f{player} &7已加入安全检查白名单。'
+  whitelist-remove-message: '{prefix}&8[&a+&8] &a&l移除成功 &8| &f{player} &7已移出安全检查白名单。'
+  whitelist-list-message: '{prefix}&8[&b*&8] &b&l白名单 &8| &f{players}'
+  whitelist-empty-message: '{prefix}&8[&e!&8] &e&l白名单为空 &8| &7当前没有已豁免的玩家。'
+
+  # 创造模式切换警告
+  switch-message: '{prefix}&c&l模式切换 &#34495E&l| &#95A5A6&l当前世界不允许创造模式，已自动切换为生存！'
+
+  # 物品交互警告提示
+  nbt-pickup-delete: '{prefix}&c&l非法物品 &#34495E&l| &#95A5A6&l您捡起的物品含有非法NBT，已被销毁！'
+  enchant-pickup-remove: '{prefix}&c&l非法附魔 &#34495E&l| &#95A5A6&l您捡起的物品含有非法附魔，已自动清理！'
+  nbt-drop-delete: '{prefix}&c&l非法物品 &#34495E&l| &#95A5A6&l您丢出的物品含有非法NBT，已被销毁！'
+  enchant-drop-remove: '{prefix}&c&l非法附魔 &#34495E&l| &#95A5A6&l您丢出的物品含有非法附魔，已自动清理！'
+  nbt-cursor-delete: '{prefix}&c&l非法操作 &#34495E&l| &#95A5A6&l光标上的物品含有非法NBT，已被销毁！'
+  nbt-use-delete: '{prefix}&c&l非法操作 &#34495E&l| &#95A5A6&l交互的物品含有非法NBT，已被销毁！'
+  enchant-use-remove: '{prefix}&c&l非法操作 &#34495E&l| &#95A5A6&l交互的物品含有非法附魔，已自动清理！'
+
+  # 违禁物品警告提示
+  banned-item-inventory: '{prefix}&c&l违禁物品 &#34495E&l| &#95A5A6&l系统在您的背包中发现了违禁品，已自动清理！'
+  banned-item-container: '{prefix}&c&l违禁物品 &#34495E&l| &#95A5A6&l您打开的容器内含有违禁品，已自动清理！'
+  banned-item-into-container: '{prefix}&c&l操作拦截 &#34495E&l| &#95A5A6&l禁止将违禁品放入容器中！'
+  nbt-item-into-container: '{prefix}&c&l操作拦截 &#34495E&l| &#95A5A6&l禁止将含有非法NBT的物品放入容器！'
+
+  # 背包清理提示
+  enchant-inventory-remove: '{prefix}&c&l非法附魔 &#34495E&l| &#95A5A6&l系统已清理您背包中物品的非法附魔！'
+  enchant-offhand-remove: '{prefix}&c&l非法附魔 &#34495E&l| &#95A5A6&l系统已清理您副手中物品的非法附魔！'
+  stack-inventory-fixed: '{prefix}&c&l非法堆叠 &#34495E&l| &#95A5A6&l系统检测到背包中存在非法堆叠物品，已自动修复！'
+  stack-offhand-fixed: '{prefix}&c&l非法堆叠 &#34495E&l| &#95A5A6&l系统检测到副手中存在非法堆叠物品，已自动修复！'
+
+  # 药水效果提示
+  effect-cleared: '{prefix}&c&l药水异常 &#34495E&l| &#95A5A6&l系统检测到您身上存在异常药水效果，已自动清除！'
+  nbt-inventory-cleaned: '{prefix}&c&l违禁清理 &#34495E&l► &#95A5A6&l你的{source}中存在异常NBT物品，已被系统彻底销毁！'
+  nbt-offhand-cleaned: '{prefix}&c&l违禁清理 &#34495E&l► &#95A5A6&l你副手中的异常NBT物品已被系统彻底销毁！'

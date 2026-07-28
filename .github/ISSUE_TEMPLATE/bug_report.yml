@@ -1,0 +1,57 @@
+name: Bug report / 错误报告
+description: Report a reproducible ICUAC problem / 报告可复现问题
+title: "[Bug] "
+labels: ["bug", "needs-triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        English first, Chinese accepted. Remove secrets and private player data.
+        请优先使用英文，也接受中文；请移除密钥和私人玩家数据。
+  - type: input
+    id: version
+    attributes:
+      label: ICUAC version / ICUAC 版本
+      placeholder: "2.0.0"
+    validations:
+      required: true
+  - type: input
+    id: server
+    attributes:
+      label: Server and Java / 服务端与 Java
+      placeholder: "Folia 1.21.11, Java 21"
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Reproduction steps / 复现步骤
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior / 预期行为
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior and logs / 实际行为与日志
+      render: shell
+    validations:
+      required: true
+  - type: textarea
+    id: config
+    attributes:
+      label: Relevant sanitized configuration / 相关脱敏配置
+      render: yaml
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Checklist / 检查项
+      options:
+        - label: I tested the latest release. / 我已测试最新版本。
+          required: true
+        - label: I removed secrets and private data. / 我已移除密钥和私人数据。
+          required: true

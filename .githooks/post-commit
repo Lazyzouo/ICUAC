@@ -1,0 +1,7 @@
+#!/bin/sh
+
+branch="$(git branch --show-current 2>/dev/null)"
+if [ "$branch" = "main" ] && git remote get-url origin >/dev/null 2>&1; then
+  echo "[ICUAC] Pushing completed update to origin/main..."
+  git push origin HEAD:main || echo "[ICUAC] Automatic push failed; the commit remains local."
+fi

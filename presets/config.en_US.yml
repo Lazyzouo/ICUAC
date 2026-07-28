@@ -1,0 +1,230 @@
+# =============================================================================
+# ICUAC Official English Preset
+# Tested on Paper/Folia 1.21.11 with Java 21
+# Personal server values belong in plugins/ICUAC/config.yml and are not synced
+# =============================================================================
+
+# Interface language: zh_CN (Simplified Chinese) or en_US (English)
+language: en_US
+
+# GitHub update checker. Verified releases are staged for the next restart.
+updates:
+  enabled: true
+  auto-download: true
+
+# Global online inventory scan period. 20 ticks are approximately one second.
+# Changing this value requires a server/plugin restart; hot reload does not reschedule it.
+global-settings:
+  inventory-check-interval-ticks: 1
+
+# Minimum delay between end-crystal attacks, in milliseconds, for every game mode.
+crystal:
+  hit-interval: 200
+
+# Command protection
+command-blocking-enabled: true
+command-blocking-max-depth: 4
+blocked-commands:
+  - kill
+  - effect
+hide-blocked-commands-from-tab: true
+permission-bypass-enabled: false
+block-command-blocks: true
+block-console-commands: false
+
+# Creative mode isolation. Replace creative_world with the exact allowed world name.
+creative-world-whitelist:
+  enabled: true
+  check-interval-ticks: 20
+  worlds:
+    - creative_world
+  source-game-modes:
+    - CREATIVE
+  ignored-game-modes:
+    - SPECTATOR
+  target-game-mode: SURVIVAL
+  log-switches: true
+
+features:
+  # Kill players below the configured world-environment threshold.
+  prevent-below-bedrock:
+    enabled: true
+    threshold-normal: -65.0
+    threshold-nether: -1.0
+  # Kill players above the Nether roof in exact listed worlds.
+  # An empty worlds list applies to every Nether world.
+  prevent-above-nether-bedrock:
+    enabled: true
+    threshold: 127
+    worlds:
+      - world_nether
+  # Clear item and experience drops in exact listed worlds. ICUAC whitelist does not bypass this.
+  death-drop-control:
+    enabled: true
+    no-drop-worlds: []
+
+# Bukkit Material names removed from non-bypassed players and containers.
+banned-items:
+  - COMMAND_BLOCK
+  - COMMAND_BLOCK_MINECART
+  - REPEATING_COMMAND_BLOCK
+  - CHAIN_COMMAND_BLOCK
+  - BARRIER
+  - STRUCTURE_BLOCK
+  - STRUCTURE_VOID
+  - LIGHT
+  - JIGSAW
+  - SPAWNER
+  - BEDROCK
+  - END_PORTAL_FRAME
+  - END_GATEWAY
+  - ENCHANTED_GOLDEN_APPLE
+  - TNT
+
+illegal-effects-settings:
+  check-duration: true
+  max-duration-ticks: 12000
+  check-level: true
+  # Values are zero-based amplifiers: 3 permits the displayed level IV.
+  specific-level-limits:
+    DAMAGE_RESISTANCE: 4
+  default-level-fallback: 10
+  default-level-limits:
+    SLOW: 7
+    RESISTANCE: 5
+    SPEED: 3
+    HASTE: 3
+    STRENGTH: 3
+    JUMP: 3
+    REGENERATION: 3
+    FIRE_RESISTANCE: 3
+    WATER_BREATHING: 3
+    INVISIBILITY: 3
+    NIGHT_VISION: 3
+    HEALTH_BOOST: 3
+    ABSORPTION: 3
+    SATURATION: 3
+    GLOWING: 3
+    LEVITATION: 3
+    LUCK: 3
+    SLOW_FALLING: 3
+    CONDUIT_POWER: 3
+    DOLPHINS_GRACE: 3
+    BAD_OMEN: 3
+    HERO_OF_THE_VILLAGE: 3
+    MINING_FATIGUE: 3
+    CONFUSION: 3
+    BLINDNESS: 3
+    HUNGER: 3
+    WEAKNESS: 3
+    POISON: 3
+    WITHER: 3
+    UNLUCK: 3
+
+# Clamp oversized stacks to the material's vanilla maximum.
+illegal-stack-settings:
+  enabled: true
+
+nbt-settings:
+  enabled: true
+  check-serialized-size: true
+  max-serialized-bytes: 65536
+  check-meta-string-size: true
+  max-meta-string-length: 16384
+  check-banned-keywords: true
+  banned-meta-keywords:
+    - minecraft:custom_data
+    - minecraft:attribute_modifiers
+    - minecraft:entity_data
+    - minecraft:bucket_entity_data
+    - minecraft:block_entity_data
+    - minecraft:debug_stick_state
+    - minecraft:creative_slot_lock
+  check-persistent-data: true
+  max-persistent-data-keys: 16
+  max-persistent-data-bytes: 4096
+  check-text: true
+  max-display-name-length: 128
+  max-lore-lines: 20
+  max-lore-line-length: 256
+  check-attribute-modifiers: true
+  max-attribute-modifiers: 16
+  max-attribute-amount: 1024.0
+  max-attribute-amounts:
+    ATTACK_SPEED: 32.0
+    ATTACK_DAMAGE: 256.0
+    MOVEMENT_SPEED: 4.0
+    FLYING_SPEED: 4.0
+    STEP_HEIGHT: 10.0
+    SCALE: 16.0
+    ENTITY_INTERACTION_RANGE: 64.0
+    BLOCK_INTERACTION_RANGE: 64.0
+  # These flags can conflict with legitimate custom-item plugins. Test first.
+  unsafe-flags:
+    block-attribute-modifiers: true
+    block-unbreakable: true
+    block-hide-tooltip: true
+    block-custom-model-data: true
+    block-custom-max-stack-size: true
+    block-fire-resistant: true
+    block-rarity: true
+  check-nested-items: true
+  max-nested-depth: 2
+
+# English runtime messages. English mode also extracts lang/en_US.yml for customization.
+messages:
+  prefix: '&#00D2FF&l[&#3A7BD5&lICUAC&#00D2FF&l] &8&l» &7'
+  deny-message: '{prefix}&8[&cX&8] &c&lAccess denied &8| &7You do not have permission to perform this action.'
+  command-add-usage: '{prefix}&8[&e!&8] &e&lInvalid arguments &8| &7Usage: &f/icuac add <player>'
+  command-remove-usage: '{prefix}&8[&e!&8] &e&lInvalid arguments &8| &7Usage: &f/icuac remove <player>'
+  reload-success: '{prefix}&8[&a+&8] &a&lReload complete &8| &7Configuration and all security modules were reloaded.'
+  crystal-limit-usage: '{prefix}&8[&e!&8] &e&lInvalid arguments &8| &7Usage: &f/crystallimit bypass'
+  crystal-limit-bypassed: '{prefix}&8[&a+&8] &a&lLimit bypassed &8| &7End crystal attack cooldown no longer applies to you.'
+  crystal-limit-restored: '{prefix}&8[&e!&8] &e&lLimit restored &8| &7End crystal attack cooldown applies to you again.'
+  unknown-command: '&cUnknown command. Type "/help" for help.'
+  crystal-reload-success: '{prefix}&8[&a+&8] &a&lReload complete &8| &7Current crystal attack interval: &f{interval}ms'
+  update-checking: 'Checking GitHub for updates...'
+  update-latest: 'Version {version} is already the latest release.'
+  update-available: 'A new version {latest} is available; current version is {current}.'
+  update-downloaded: 'Version {version} was downloaded and will be installed on the next server restart.'
+  update-failed: 'Automatic update failed: {reason}. Download manually from {url}.'
+  update-manual: 'Version {version} is available. Download it from {url}.'
+
+  help-menu:
+    - '&#FF5E62--------&#FF9966--------&#F2C94C ✧ &#FF9966--------&#FF5E62--------'
+    - '   &#FF5E62&l{name} &8┃ &7Version &f&l{version} &8┃ &7Author &#F2C94C&l{author}'
+    - '&#FF5E62-------&#FF9966-------&#F2C94C-------&#FF9966-------&#FF5E62-------'
+    - '&#FF5E62&l[01] &#F2C94C&lWhitelist Management'
+    - '  &#FF9966› &f/icuac add <player> &8- &7Add a security bypass'
+    - '  &#FF9966› &f/icuac remove <player> &8- &7Remove a security bypass'
+    - '  &#FF9966› &f/icuac list &8- &7List bypassed players'
+    - '&#FF5E62&l[02] &#F2C94C&lPlugin Maintenance'
+    - '  &#FF9966› &f/crystallimit bypass &8- &7Toggle crystal cooldown bypass'
+    - '  &#FF9966› &f/crystalreload &8- &7Reload the crystal interval'
+    - '  &#FF9966› &f/icuac reload &8- &7Reload configuration and modules'
+    - '  &#FF9966› &f/icuac help &8- &7Show this help menu'
+    - '&#FF5E62--------&#FF9966--------&#F2C94C ✧ &#FF9966--------&#FF5E62--------'
+
+  whitelist-add-message: '{prefix}&8[&a+&8] &a&lPlayer added &8| &f{player} &7now bypasses ICUAC security checks.'
+  whitelist-remove-message: '{prefix}&8[&a+&8] &a&lPlayer removed &8| &f{player} &7no longer bypasses ICUAC security checks.'
+  whitelist-list-message: '{prefix}&8[&b*&8] &b&lWhitelist &8| &f{players}'
+  whitelist-empty-message: '{prefix}&8[&e!&8] &e&lWhitelist empty &8| &7No players currently bypass ICUAC.'
+  switch-message: '{prefix}&c&lGame mode changed &#34495E&l| &#95A5A6&lCreative mode is not allowed in this world; switched to Survival.'
+  nbt-pickup-delete: '{prefix}&c&lIllegal item &#34495E&l| &#95A5A6&lThe item you picked up contained illegal NBT and was destroyed.'
+  enchant-pickup-remove: '{prefix}&c&lIllegal enchantment &#34495E&l| &#95A5A6&lIllegal enchantments were removed from the item you picked up.'
+  nbt-drop-delete: '{prefix}&c&lIllegal item &#34495E&l| &#95A5A6&lThe item you dropped contained illegal NBT and was destroyed.'
+  enchant-drop-remove: '{prefix}&c&lIllegal enchantment &#34495E&l| &#95A5A6&lIllegal enchantments were removed from the item you dropped.'
+  nbt-cursor-delete: '{prefix}&c&lBlocked action &#34495E&l| &#95A5A6&lThe cursor item contained illegal NBT and was destroyed.'
+  nbt-use-delete: '{prefix}&c&lBlocked action &#34495E&l| &#95A5A6&lThe interacted item contained illegal NBT and was destroyed.'
+  enchant-use-remove: '{prefix}&c&lBlocked action &#34495E&l| &#95A5A6&lIllegal enchantments were removed from the interacted item.'
+  banned-item-inventory: '{prefix}&c&lBanned item &#34495E&l| &#95A5A6&lA banned item was found in your inventory and removed.'
+  banned-item-container: '{prefix}&c&lBanned item &#34495E&l| &#95A5A6&lBanned items were found in the opened container and removed.'
+  banned-item-into-container: '{prefix}&c&lBlocked action &#34495E&l| &#95A5A6&lBanned items cannot be moved into containers.'
+  nbt-item-into-container: '{prefix}&c&lBlocked action &#34495E&l| &#95A5A6&lItems with illegal NBT cannot be moved into containers.'
+  enchant-inventory-remove: '{prefix}&c&lIllegal enchantment &#34495E&l| &#95A5A6&lIllegal enchantments were removed from an inventory item.'
+  enchant-offhand-remove: '{prefix}&c&lIllegal enchantment &#34495E&l| &#95A5A6&lIllegal enchantments were removed from your off-hand item.'
+  stack-inventory-fixed: '{prefix}&c&lIllegal stack &#34495E&l| &#95A5A6&lAn oversized inventory stack was restored to its normal limit.'
+  stack-offhand-fixed: '{prefix}&c&lIllegal stack &#34495E&l| &#95A5A6&lAn oversized off-hand stack was restored to its normal limit.'
+  effect-cleared: '{prefix}&c&lIllegal effect &#34495E&l| &#95A5A6&lAn abnormal potion effect was removed from you.'
+  nbt-inventory-cleaned: '{prefix}&c&lIllegal NBT removed &#34495E&l| &#95A5A6&lIllegal NBT items in your {source} were destroyed.'
+  nbt-offhand-cleaned: '{prefix}&c&lIllegal NBT removed &#34495E&l| &#95A5A6&lThe illegal NBT item in your off hand was destroyed.'
