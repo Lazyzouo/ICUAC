@@ -1,6 +1,6 @@
 # Configuration Reference / 配置参考
 
-> ICUAC 2.1.0 · Paper/Folia 1.21.11 · Java 21
+> ICUAC 2.1.1 · Paper/Folia 1.21.11 · Java 21
 
 ## English
 

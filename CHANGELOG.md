@@ -4,6 +4,22 @@ All notable changes are documented here. English is listed first, followed by Ch
 
 所有重要更新均记录于此；英文在前，中文在后。
 
+## [2.1.1] - 2026-07-29
+
+### English
+
+#### Changed
+
+- Replaced the startup console border with equal-length halves around a centered `✧`, and centered every non-help banner line on that same axis using CJK-aware display widths.
+- Kept the help-menu layout unchanged while guaranteeing bold rendering for every player-visible text component; pure decorative divider glyphs remain unbold to preserve alignment.
+
+### 中文
+
+#### 调整
+
+- 将启动后台边框改为以 `✧` 为中心、左右等长的分割线，并按中英文可见宽度将所有非 help 横幅文字统一居中到同一轴线。
+- 保持 help 菜单布局不变，同时保证所有玩家可见文字组件均强制粗体；纯装饰分割线继续保持非粗体以确保对齐。
+
 ## [2.1.0] - 2026-07-29
 
 ### English
@@ -174,6 +190,7 @@ All notable changes are documented here. English is listed first, followed by Ch
 - 新增仅 OP 使用的 `/crystallimit bypass` 运行期切换。
 - ICUAC 白名单变化时即时刷新客户端命令树。
 
+[2.1.1]: https://github.com/Lazyzouo/ICUAC/releases/tag/v2.1.1
 [2.1.0]: https://github.com/Lazyzouo/ICUAC/releases/tag/v2.1.0
 [2.0.5]: https://github.com/Lazyzouo/ICUAC/releases/tag/v2.0.5
 [2.0.4]: https://github.com/Lazyzouo/ICUAC/releases/tag/v2.0.4

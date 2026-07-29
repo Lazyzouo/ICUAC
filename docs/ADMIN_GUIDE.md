@@ -1,6 +1,6 @@
 # ICUAC Administrator Guide / ICUAC 管理员指南
 
-> Version: 2.1.0
+> Version: 2.1.1
 > Tested: Paper/Folia 1.21.11
 > Java: 21
 
@@ -63,7 +63,7 @@ At startup the updater calls the official `Lazyzouo/ICUAC` latest-release endpoi
 
 ### Console Presentation
 
-Startup prints a fixed-width bilingual banner containing the ICUAC version, author, Paper/Folia 1.21.11 test baseline, active language, repository, open-source privacy statement, and detected Paper or Folia platform. Player-facing messages and console text are bold, except pure decorative help-menu divider lines, which remain unbold for alignment. The ICUAC console prefix keeps one blue palette while status text uses aqua for checking, green for success/latest/downloaded, yellow for a new/manual version, and red for failures.
+Startup prints a fixed-width bilingual banner containing the ICUAC version, author, Paper/Folia 1.21.11 test baseline, active language, repository, open-source privacy statement, and detected Paper or Folia platform. Its upper and lower dividers use equal-length halves around a centered `✧`; every non-help banner line is centered on that axis using CJK-aware display widths. Every player-visible text component and console line is forced bold, while pure decorative help-menu divider glyphs remain unbold for alignment. The help-menu layout itself is unchanged. The ICUAC console prefix keeps one blue palette while status text uses aqua for checking, green for success/latest/downloaded, yellow for a new/manual version, and red for failures.
 
 ### Deployment Checklist
 
@@ -136,7 +136,7 @@ ICUAC 白名单会绕过命令拦截/Tab 隐藏、背包安全、NBT、附魔、
 
 ### 后台显示
 
-启动时会输出固定宽度的双语横幅，包含 ICUAC 版本、作者、Paper/Folia 1.21.11 测试基线、当前语言、仓库、开源隐私声明及实际识别的 Paper 或 Folia 核心。玩家消息与后台文字统一使用粗体；帮助菜单中的纯装饰分割线继续保持非粗体，确保对齐。后台 ICUAC 前缀固定使用同一套蓝色，状态文字则以青色表示检查、绿色表示成功/最新版/下载完成、黄色表示发现新版/手动下载、红色表示失败。
+启动时会输出固定宽度的双语横幅，包含 ICUAC 版本、作者、Paper/Folia 1.21.11 测试基线、当前语言、仓库、开源隐私声明及实际识别的 Paper 或 Folia 核心。上下分割线以居中的 `✧` 分成等长两侧，所有非 help 横幅文字均按中英文显示宽度居中到该轴线。所有玩家可见文字组件及后台行都强制使用粗体；help 菜单布局保持不变，纯装饰分割线继续保持非粗体以确保对齐。后台 ICUAC 前缀固定使用同一套蓝色，状态文字则以青色表示检查、绿色表示成功/最新版/下载完成、黄色表示发现新版/手动下载、红色表示失败。
 
 ### 部署检查
 

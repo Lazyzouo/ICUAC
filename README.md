@@ -22,7 +22,7 @@ ICUAC applies configurable server-side rules for commands, player state, locatio
 
 The project provides Simplified Chinese and English default packages, Folia-aware scheduling, official generic presets, and an updater that downloads only language-matched GitHub Release assets after verifying GitHub's SHA-256 digest.
 
-> Current version: **2.1.0**
+> Current version: **2.1.1**
 > Tested server version: **Paper/Folia 1.21.11**
 > Required Java version: **21**
 > Author: **Lazyz**
@@ -35,8 +35,8 @@ Download only from [GitHub Releases](https://github.com/Lazyzouo/ICUAC/releases/
 
 | Asset | Default language | Use case |
 | --- | --- | --- |
-| `ICUAC-2.1.0-zh.cn.jar` | Simplified Chinese (`zh_CN`) | Chinese server administrators |
-| `ICUAC-2.1.0-en.us.jar` | English (`en_US`) | English server administrators |
+| `ICUAC-2.1.1-zh.cn.jar` | Simplified Chinese (`zh_CN`) | Chinese server administrators |
+| `ICUAC-2.1.1-en.us.jar` | English (`en_US`) | English server administrators |
 
 Both plugin JARs contain the same features. The only difference is the first-run language preset. Existing server configuration is preserved during updates.
 
@@ -59,7 +59,7 @@ No source JAR or standalone checksum file is uploaded as a Release asset. The co
 | Potion effects | Removes an entire active effect when its configured duration or amplifier limit is exceeded. |
 | End crystals | Cancels crystal damage attempts made sooner than `crystal.hit-interval` in every game mode; an OP can toggle a runtime-only personal bypass. |
 | Languages | Provides Chinese-default and English-default JARs with matching messages and complete official presets. |
-| Console presentation | Uses a consistent ICUAC prefix, bold text, a bilingual startup banner, detected Paper/Folia platform, and status-colored updater notices. |
+| Console presentation | Uses a consistent ICUAC prefix, bold text, a bilingual startup banner centered on a `✧` divider axis with CJK-aware widths, detected Paper/Folia platform, and status-colored updater notices. |
 | Automatic updates | Checks the official GitHub Release at startup, selects the active-language JAR, verifies GitHub's SHA-256 digest, and stages the file for the next restart. |
 | Scheduling | Uses Paper/Folia-compatible global, region, entity, and asynchronous scheduling where each task requires it. |
 
@@ -151,7 +151,7 @@ ICUAC 针对命令、玩家状态、坐标、物品、药水效果和末地水�
 
 项目提供简体中文与英文默认包、Folia 调度兼容、官方通用参数预设，以及只下载当前语言 GitHub Release 资产并校验 GitHub SHA-256 摘要的自动更新器。
 
-> 当前版本：**2.1.0**
+> 当前版本：**2.1.1**
 > 已测试服务端版本：**Paper/Folia 1.21.11**
 > Java 要求：**21**
 > 作者：**Lazyz**
@@ -162,8 +162,8 @@ ICUAC 针对命令、玩家状态、坐标、物品、药水效果和末地水�
 
 **官方下载声明：** 请只安装由 `Lazyzouo/ICUAC` 发布且文件名精确包含 `en.us.jar` 或 `zh.cn.jar` 的资源。GitHub 自动生成的 Source code 源码压缩包及第三方镜像提供的文件都不是可安装的官方插件构建。
 
-- `ICUAC-2.1.0-zh.cn.jar`：默认简体中文。
-- `ICUAC-2.1.0-en.us.jar`：默认英文。
+- `ICUAC-2.1.1-zh.cn.jar`：默认简体中文。
+- `ICUAC-2.1.1-en.us.jar`：默认英文。
 
 两个插件 JAR 功能完全一致，仅首次生成配置时的默认语言不同。自动更新不会覆盖服务器已有配置。
 
@@ -197,7 +197,7 @@ Release 不再额外上传源码 JAR 或独立校验文件。完整源码与注�
 | 药水效果 | 生效时间或效果等级超过配置上限时，移除整个对应效果。 |
 | 末地水晶 | 所有游戏模式中，两次攻击短于 `crystal.hit-interval` 时取消水晶伤害；OP 可临时切换仅对自己的运行期绕过。 |
 | 语言 | 提供中文默认和英文默认 JAR，两者带有对应消息与完整官方预设。 |
-| 后台显示 | 使用统一 ICUAC 前缀、粗体文字、双语启动横幅、实际 Paper/Folia 核心识别及按状态着色的更新通知。 |
+| 后台显示 | 使用统一 ICUAC 前缀、全部粗体文字、以 `✧` 分割线为中轴并按中英文宽度居中的双语启动横幅、实际 Paper/Folia 核心识别及按状态着色的更新通知。 |
 | 自动更新 | 启动时检查官方 GitHub Release，选择当前语言 JAR，校验 GitHub SHA-256 摘要并放入下次重启使用的更新目录。 |
 | 调度兼容 | 按任务用途使用兼容 Paper/Folia 的全局、区域、实体与异步调度器。 |
 
