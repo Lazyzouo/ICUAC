@@ -1,10 +1,14 @@
 # ICUAC Administrator Guide / ICUAC 管理员指南
 
-> Version: 2.0.1
+> Version: 2.0.2
 > Tested: Paper/Folia 1.21.11
 > Java: 21
 
 ## English
+
+### Open Source And Data Privacy
+
+ICUAC is fully open source and contains no backdoors or telemetry. Server configuration, player data, world data, logs, and other plugin-generated information are never collected or uploaded. All ICUAC-created data remains on the server's local filesystem. The updater only requests public metadata and release files from GitHub and does not communicate with an ICUAC-operated data-collection server.
 
 ### Operational Model
 
@@ -66,6 +70,10 @@ At startup the updater calls the official `Lazyzouo/ICUAC` latest-release endpoi
 ---
 
 ## 中文
+
+### 开源与数据隐私
+
+ICUAC 完全开源，不包含后门或遥测。服务器配置、玩家数据、世界数据、日志及其他插件生成资料均不会被收集或上传；ICUAC 创建的所有数据只保存在服务器本地文件系统。更新器只向 GitHub 请求公开版本元数据与发行文件，不会连接任何由 ICUAC 运营的数据收集服务器。
 
 ### 运行逻辑
 

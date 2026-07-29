@@ -1,5 +1,14 @@
 # ICUAC
 
+> [!IMPORTANT]
+> **Open-Source and Data Privacy Statement**
+>
+> ICUAC is a fully open-source project. It contains no backdoors, telemetry, or code that collects or uploads server configuration, player data, world data, logs, or other plugin-generated information. All data created by ICUAC remains on your server's local filesystem. Update checks only request public release metadata and software files published in this GitHub repository; ICUAC operates no separate server for collecting server information.
+>
+> **开源与数据隐私声明**
+>
+> ICUAC 是一个彻底开源的项目，不包含后门、遥测，也不存在收集或上传服务器配置、玩家数据、世界数据、日志及其他插件生成资料的代码。ICUAC 创建的所有数据均只保存在你的服务器本地文件系统。更新检查仅请求本 GitHub 仓库公开发布的版本元数据与软件文件；ICUAC 不运营任何用于收集服务器资料的独立服务器。
+
 [![Build](https://github.com/Lazyzouo/ICUAC/actions/workflows/build.yml/badge.svg)](https://github.com/Lazyzouo/ICUAC/actions/workflows/build.yml)
 [![CodeQL](https://github.com/Lazyzouo/ICUAC/actions/workflows/codeql.yml/badge.svg)](https://github.com/Lazyzouo/ICUAC/actions/workflows/codeql.yml)
 [![Release](https://img.shields.io/github/v/release/Lazyzouo/ICUAC)](https://github.com/Lazyzouo/ICUAC/releases/latest)
@@ -11,7 +20,7 @@
 
 ICUAC protects commands, inventories, NBT data, game modes, dangerous locations, potion effects, item stacks, and end-crystal attack timing. It ships with Simplified Chinese and English editions, official safe presets, Folia-aware scheduling, and a verified GitHub auto-updater.
 
-> Current version: **2.0.1**
+> Current version: **2.0.2**
 > Tested server version: **Paper/Folia 1.21.11**
 > Required Java version: **21**
 > Author: **Lazyz**
@@ -22,8 +31,8 @@ Download only from [GitHub Releases](https://github.com/Lazyzouo/ICUAC/releases/
 
 | Asset | Default language | Use case |
 | --- | --- | --- |
-| `ICUAC-2.0.1-zh.cn.jar` | Simplified Chinese (`zh_CN`) | Chinese server administrators |
-| `ICUAC-2.0.1-en.us.jar` | English (`en_US`) | English server administrators |
+| `ICUAC-2.0.2-zh.cn.jar` | Simplified Chinese (`zh_CN`) | Chinese server administrators |
+| `ICUAC-2.0.2-en.us.jar` | English (`en_US`) | English server administrators |
 
 Both plugin JARs contain the same features. The only difference is the first-run language preset. Existing server configuration is preserved during updates.
 
@@ -130,7 +139,7 @@ ICUAC is released under the [MIT License](LICENSE).
 
 ICUAC 提供命令、背包、NBT、游戏模式、危险坐标、药水、物品堆叠和末地水晶攻击间隔保护，并内置简体中文及英文版本、官方安全预设、Folia 调度兼容和经过 SHA-256 校验的 GitHub 自动更新。
 
-> 当前版本：**2.0.1**
+> 当前版本：**2.0.2**
 > 已测试服务端版本：**Paper/Folia 1.21.11**
 > Java 要求：**21**
 > 作者：**Lazyz**
@@ -139,8 +148,8 @@ ICUAC 提供命令、背包、NBT、游戏模式、危险坐标、药水、物�
 
 请只从 [GitHub Releases](https://github.com/Lazyzouo/ICUAC/releases/latest) 下载：
 
-- `ICUAC-2.0.1-zh.cn.jar`：默认简体中文。
-- `ICUAC-2.0.1-en.us.jar`：默认英文。
+- `ICUAC-2.0.2-zh.cn.jar`：默认简体中文。
+- `ICUAC-2.0.2-en.us.jar`：默认英文。
 
 两个插件 JAR 功能完全一致，仅首次生成配置时的默认语言不同。自动更新不会覆盖服务器已有配置。
 

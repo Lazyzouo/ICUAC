@@ -19,6 +19,10 @@ Include affected versions, server build, reproduction steps, impact, proof of co
 
 The maintainer will acknowledge a valid report as soon as practical, investigate privately, and publish a release and advisory when remediation is ready.
 
+### Open Source And Data Privacy
+
+ICUAC is fully open source and contains no backdoors or telemetry. It does not collect or upload server configuration, player data, world data, logs, or other plugin-generated information. Files created by the plugin remain on the server's local filesystem. The updater communicates only with GitHub's public Release service to compare versions and download published release assets; ICUAC operates no separate data-collection server.
+
 ### Update Trust Model
 
 The built-in updater reads only the official `Lazyzouo/ICUAC` latest public Release. It requires the exact language-specific asset name and a valid SHA-256 digest supplied in GitHub's asset metadata. Administrators can disable checking or automatic download in configuration.
@@ -39,6 +43,10 @@ The built-in updater reads only the official `Lazyzouo/ICUAC` latest public Rele
 请使用仓库 Security 页面的私密漏洞报告，不要公开提交绕过、任意文件写入、更新器风险、拒绝服务或敏感数据泄露问题。
 
 请提供受影响版本、服务端构建、复现步骤、影响、概念验证及可行缓解方式。不要附带真实凭据或私人玩家数据。
+
+### 开源与数据隐私
+
+ICUAC 完全开源，不包含后门或遥测，不会收集或上传服务器配置、玩家数据、世界数据、日志及其他插件生成资料。插件创建的文件只保存在服务器本地文件系统。更新器仅与 GitHub 公开 Release 服务通信，用于比较版本并下载已发布的发行文件；ICUAC 不运营独立的数据收集服务器。
 
 ### 更新信任模型
 

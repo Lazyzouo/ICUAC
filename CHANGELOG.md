@@ -4,6 +4,22 @@ All notable changes are documented here. English is listed first, followed by Ch
 
 所有重要更新均记录于此；英文在前，中文在后。
 
+## [2.0.2] - 2026-07-29
+
+### English
+
+#### Documentation
+
+- Added a prominent bilingual open-source and data-privacy statement.
+- Clarified that ICUAC contains no backdoors or telemetry, stores plugin-created data locally, and contacts only GitHub for release checks and downloads.
+
+### 中文
+
+#### 文档
+
+- 新增置顶的中英双语开源与数据隐私声明。
+- 明确 ICUAC 不包含后门或遥测，插件创建的数据仅在本地保存，更新检查与下载只访问 GitHub。
+
 ## [2.0.1] - 2026-07-29
 
 ### English
@@ -84,6 +100,7 @@ All notable changes are documented here. English is listed first, followed by Ch
 - 新增仅 OP 使用的 `/crystallimit bypass` 运行期切换。
 - ICUAC 白名单变化时即时刷新客户端命令树。
 
+[2.0.2]: https://github.com/Lazyzouo/ICUAC/releases/tag/v2.0.2
 [2.0.1]: https://github.com/Lazyzouo/ICUAC/releases/tag/v2.0.1
 [2.0.0]: https://github.com/Lazyzouo/ICUAC/releases/tag/v2.0.0
 [1.1.1]: https://github.com/Lazyzouo/ICUAC/releases/tag/v1.1.1
