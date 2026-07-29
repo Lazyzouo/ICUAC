@@ -16,11 +16,15 @@
 [![Java](https://img.shields.io/badge/Java-21-ED8B00)](https://adoptium.net/)
 [![Tested](https://img.shields.io/badge/Tested-1.21.11-2ea44f)](#compatibility)
 
-**A bilingual security and rule-enforcement core for Paper and Folia servers.**
+**A configurable server-side rule-enforcement plugin for Paper and Folia.**
 
-ICUAC protects commands, inventories, NBT data, game modes, dangerous locations, potion effects, item stacks, and end-crystal attack timing. It ships with Simplified Chinese and English editions, official safe presets, Folia-aware scheduling, and a verified GitHub auto-updater.
+ICUAC applies explicit enforcement rules rather than acting as a general-purpose anti-cheat. Depending on configuration, it can block root and nested `execute run` commands, hide blocked commands from client Tab completion, isolate selected game modes by world, kill players who cross configured void or Nether-roof boundaries, clear death drops in selected worlds, confiscate listed materials, remove invalid enchantments or excessive potion effects, repair oversized item stacks, and rate-limit end-crystal attacks.
 
-> Current version: **2.0.3**
+The NBT module is a rule-based item validator, not a universal raw-NBT scanner, exploit database, or anti-cheat engine. It inspects only information exposed through Paper/Bukkit APIs, including serialized item size, ItemMeta text, PDC keys and values, attributes, selected unsafe component flags, and nested container items. It cannot guarantee detection of every malformed, custom, or version-specific NBT payload. Official presets enable many destructive checks by default; matched items can be removed permanently, and strict rules can conflict with legitimate custom-item plugins. Administrators must review `config.yml`, back up player data, and test compatibility before production use.
+
+The project provides Simplified Chinese and English default packages, Folia-aware scheduling, official generic presets, and an updater that downloads only language-matched GitHub Release assets after verifying GitHub's SHA-256 digest.
+
+> Current version: **2.0.4**
 > Tested server version: **Paper/Folia 1.21.11**
 > Required Java version: **21**
 > Author: **Lazyz**
@@ -33,8 +37,8 @@ Download only from [GitHub Releases](https://github.com/Lazyzouo/ICUAC/releases/
 
 | Asset | Default language | Use case |
 | --- | --- | --- |
-| `ICUAC-2.0.3-zh.cn.jar` | Simplified Chinese (`zh_CN`) | Chinese server administrators |
-| `ICUAC-2.0.3-en.us.jar` | English (`en_US`) | English server administrators |
+| `ICUAC-2.0.4-zh.cn.jar` | Simplified Chinese (`zh_CN`) | Chinese server administrators |
+| `ICUAC-2.0.4-en.us.jar` | English (`en_US`) | English server administrators |
 
 Both plugin JARs contain the same features. The only difference is the first-run language preset. Existing server configuration is preserved during updates.
 
@@ -137,11 +141,15 @@ ICUAC is released under the [MIT License](LICENSE).
 
 # ICUAC 中文说明
 
-**适用于 Paper 与 Folia 的双语服务器安全与规则控制核心。**
+**适用于 Paper 与 Folia 的可配置服务端规则执行插件。**
 
-ICUAC 提供命令、背包、NBT、游戏模式、危险坐标、药水、物品堆叠和末地水晶攻击间隔保护，并内置简体中文及英文版本、官方安全预设、Folia 调度兼容和经过 SHA-256 校验的 GitHub 自动更新。
+ICUAC 按配置执行明确的限制与处置规则，并不是通用反作弊。根据配置，它可以拦截根命令及嵌套的 `execute run` 命令、从客户端 Tab 补全中隐藏受限命令、按世界隔离指定游戏模式、处置越过虚空或下界基岩顶阈值的玩家、清空指定世界的死亡掉落、没收列表中的违禁材质、移除非法附魔或超限药水效果、修复超量物品堆叠，以及限制末地水晶连续攻击间隔。
 
-> 当前版本：**2.0.3**
+NBT 模块属于基于规则的物品检查器，不是通用原始 NBT 扫描器、漏洞库或反作弊引擎。它只检查 Paper/Bukkit API 能读取的信息，包括物品序列化大小、ItemMeta 文本、PDC 键和值、属性、指定的不安全组件标记及嵌套容器物品；无法保证识别所有畸形、自定义或特定版本的 NBT 数据。官方预设默认启用多项具有删除性质的检查，命中规则的物品可能被永久移除，严格配置也可能与合法的自定义物品插件冲突。正式使用前必须检查 `config.yml`、备份玩家数据并在测试服验证兼容性。
+
+项目提供简体中文与英文默认包、Folia 调度兼容、官方通用参数预设，以及只下载当前语言 GitHub Release 资产并校验 GitHub SHA-256 摘要的自动更新器。
+
+> 当前版本：**2.0.4**
 > 已测试服务端版本：**Paper/Folia 1.21.11**
 > Java 要求：**21**
 > 作者：**Lazyz**
@@ -152,8 +160,8 @@ ICUAC 提供命令、背包、NBT、游戏模式、危险坐标、药水、物�
 
 **官方下载声明：** 请只安装由 `Lazyzouo/ICUAC` 发布且文件名精确包含 `en.us.jar` 或 `zh.cn.jar` 的资源。GitHub 自动生成的 Source code 源码压缩包及第三方镜像提供的文件都不是可安装的官方插件构建。
 
-- `ICUAC-2.0.3-zh.cn.jar`：默认简体中文。
-- `ICUAC-2.0.3-en.us.jar`：默认英文。
+- `ICUAC-2.0.4-zh.cn.jar`：默认简体中文。
+- `ICUAC-2.0.4-en.us.jar`：默认英文。
 
 两个插件 JAR 功能完全一致，仅首次生成配置时的默认语言不同。自动更新不会覆盖服务器已有配置。
 

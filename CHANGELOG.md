@@ -4,6 +4,22 @@ All notable changes are documented here. English is listed first, followed by Ch
 
 所有重要更新均记录于此；英文在前，中文在后。
 
+## [2.0.4] - 2026-07-29
+
+### English
+
+#### Documentation
+
+- Rewrote the plugin overview to describe each enforcement category and its actual result.
+- Clarified that NBT protection is limited to configurable Paper/Bukkit-visible item data, is not a universal raw-NBT or anti-cheat engine, and may permanently remove matched items or conflict with custom-item plugins.
+
+### 中文
+
+#### 文档
+
+- 重写插件概述，明确各类规则的触发范围与实际处置结果。
+- 明确 NBT 防护仅检查可配置且 Paper/Bukkit 可见的物品数据，不是通用原始 NBT 或反作弊引擎，并可能永久删除命中物品或与自定义物品插件冲突。
+
 ## [2.0.3] - 2026-07-29
 
 ### English
@@ -116,6 +132,7 @@ All notable changes are documented here. English is listed first, followed by Ch
 - 新增仅 OP 使用的 `/crystallimit bypass` 运行期切换。
 - ICUAC 白名单变化时即时刷新客户端命令树。
 
+[2.0.4]: https://github.com/Lazyzouo/ICUAC/releases/tag/v2.0.4
 [2.0.3]: https://github.com/Lazyzouo/ICUAC/releases/tag/v2.0.3
 [2.0.2]: https://github.com/Lazyzouo/ICUAC/releases/tag/v2.0.2
 [2.0.1]: https://github.com/Lazyzouo/ICUAC/releases/tag/v2.0.1

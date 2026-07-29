@@ -1,6 +1,6 @@
 # ICUAC Administrator Guide / ICUAC 管理员指南
 
-> Version: 2.0.3
+> Version: 2.0.4
 > Tested: Paper/Folia 1.21.11
 > Java: 21
 

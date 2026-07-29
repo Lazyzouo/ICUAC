@@ -12,7 +12,7 @@ body:
     id: version
     attributes:
       label: ICUAC version / ICUAC 版本
-      placeholder: "2.0.3"
+      placeholder: "2.0.4"
     validations:
       required: true
   - type: input
