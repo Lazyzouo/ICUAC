@@ -1,6 +1,6 @@
 # ICUAC Administrator Guide / ICUAC 管理员指南
 
-> Version: 2.0.0
+> Version: 2.0.1
 > Tested: Paper/Folia 1.21.11
 > Java: 21
 
@@ -51,7 +51,7 @@ Use `/icuac reload` for normal configuration changes. It reloads language, white
 
 ### Automatic Updates
 
-At startup the updater calls the official `Lazyzouo/ICUAC` latest-release endpoint. A release is installed only when the exact `ICUAC-<version>.jar` and matching `.sha256` assets exist and the digest matches. The file is staged for the next restart. Network, API, asset, write, or checksum failures are logged with the official Releases URL.
+At startup the updater calls the official `Lazyzouo/ICUAC` latest-release endpoint. It selects `ICUAC-<version>-en.us.jar` for English mode or `ICUAC-<version>-zh.cn.jar` for Chinese mode, and requires GitHub's asset metadata to contain a valid matching SHA-256 digest. The file is staged for the next restart. Network, API, asset, write, or checksum failures are logged with the official Releases URL.
 
 ### Deployment Checklist
 
@@ -112,7 +112,7 @@ ICUAC 白名单会绕过命令拦截/Tab 隐藏、背包安全、NBT、附魔、
 
 ### 自动更新
 
-插件启动时检查 `Lazyzouo/ICUAC` 的最新 Release。只有目标 JAR 与同名 `.sha256` 同时存在且校验一致时才会进入服务端更新目录，并在下次重启安装。任何失败都会在后台输出原因及官方下载地址。
+插件启动时检查 `Lazyzouo/ICUAC` 的最新 Release。英文模式选择 `ICUAC-<版本>-en.us.jar`，中文模式选择 `ICUAC-<版本>-zh.cn.jar`；只有 GitHub 资产元数据提供有效且匹配的 SHA-256 摘要时，文件才会进入服务端更新目录，并在下次重启安装。任何失败都会在后台输出原因及官方下载地址。
 
 ### 部署检查
 

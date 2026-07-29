@@ -21,7 +21,7 @@ The maintainer will acknowledge a valid report as soon as practical, investigate
 
 ### Update Trust Model
 
-The built-in updater reads only the official `Lazyzouo/ICUAC` latest public Release. It requires an exact release asset name and matching SHA-256 file. Administrators can disable checking or automatic download in configuration.
+The built-in updater reads only the official `Lazyzouo/ICUAC` latest public Release. It requires the exact language-specific asset name and a valid SHA-256 digest supplied in GitHub's asset metadata. Administrators can disable checking or automatic download in configuration.
 
 ## 中文
 
@@ -42,4 +42,4 @@ The built-in updater reads only the official `Lazyzouo/ICUAC` latest public Rele
 
 ### 更新信任模型
 
-内置更新器只读取官方 `Lazyzouo/ICUAC` 最新公开 Release，并要求精确文件名和匹配的 SHA-256。管理员可以在配置中关闭检查或自动下载。
+内置更新器只读取官方 `Lazyzouo/ICUAC` 最新公开 Release，并要求精确的语言资产文件名以及 GitHub 资产元数据中有效且匹配的 SHA-256 摘要。管理员可以在配置中关闭检查或自动下载。

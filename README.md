@@ -11,7 +11,7 @@
 
 ICUAC protects commands, inventories, NBT data, game modes, dangerous locations, potion effects, item stacks, and end-crystal attack timing. It ships with Simplified Chinese and English editions, official safe presets, Folia-aware scheduling, and a verified GitHub auto-updater.
 
-> Current version: **2.0.0**
+> Current version: **2.0.1**
 > Tested server version: **Paper/Folia 1.21.11**
 > Required Java version: **21**
 > Author: **Lazyz**
@@ -22,12 +22,12 @@ Download only from [GitHub Releases](https://github.com/Lazyzouo/ICUAC/releases/
 
 | Asset | Default language | Use case |
 | --- | --- | --- |
-| `ICUAC-2.0.0.jar` | Simplified Chinese (`zh_CN`) | Chinese server administrators |
-| `ICUAC-2.0.0-en_US.jar` | English (`en_US`) | English server administrators |
-| `ICUAC-2.0.0-sources.jar` | Source code | Auditing and development |
-| `*.sha256` | N/A | Release integrity verification |
+| `ICUAC-2.0.1-zh.cn.jar` | Simplified Chinese (`zh_CN`) | Chinese server administrators |
+| `ICUAC-2.0.1-en.us.jar` | English (`en_US`) | English server administrators |
 
 Both plugin JARs contain the same features. The only difference is the first-run language preset. Existing server configuration is preserved during updates.
+
+No source JAR or standalone checksum file is uploaded as a Release asset. The complete source and comments remain available from the [`main`](https://github.com/Lazyzouo/ICUAC/tree/main) branch.
 
 ## Highlights
 
@@ -89,7 +89,7 @@ updates:
   auto-download: true
 ```
 
-At startup ICUAC checks the latest public GitHub Release. A newer JAR is downloaded only when its matching `.sha256` asset is present and valid. Paper/Bukkit installs it from the update directory on the next server restart. Failures print the official Releases URL for manual recovery.
+At startup ICUAC checks the latest public GitHub Release and selects the JAR matching the active language. It verifies the SHA-256 digest supplied by GitHub before staging the file. Paper/Bukkit installs it from the update directory on the next server restart. Failures print the official Releases URL for manual recovery.
 
 No configuration or player data is uploaded by the updater.
 
@@ -116,7 +116,7 @@ No configuration or player data is uploaded by the updater.
 ./gradlew clean build
 ```
 
-Build output includes the Chinese JAR, English JAR, and source JAR under `build/libs`.
+Build output includes only the Chinese-default and English-default JARs under `build/libs`.
 
 ## License
 
@@ -130,7 +130,7 @@ ICUAC is released under the [MIT License](LICENSE).
 
 ICUAC 提供命令、背包、NBT、游戏模式、危险坐标、药水、物品堆叠和末地水晶攻击间隔保护，并内置简体中文及英文版本、官方安全预设、Folia 调度兼容和经过 SHA-256 校验的 GitHub 自动更新。
 
-> 当前版本：**2.0.0**
+> 当前版本：**2.0.1**
 > 已测试服务端版本：**Paper/Folia 1.21.11**
 > Java 要求：**21**
 > 作者：**Lazyz**
@@ -139,12 +139,12 @@ ICUAC 提供命令、背包、NBT、游戏模式、危险坐标、药水、物�
 
 请只从 [GitHub Releases](https://github.com/Lazyzouo/ICUAC/releases/latest) 下载：
 
-- `ICUAC-2.0.0.jar`：默认简体中文。
-- `ICUAC-2.0.0-en_US.jar`：默认英文。
-- `ICUAC-2.0.0-sources.jar`：源码包。
-- `*.sha256`：发行文件完整性校验。
+- `ICUAC-2.0.1-zh.cn.jar`：默认简体中文。
+- `ICUAC-2.0.1-en.us.jar`：默认英文。
 
 两个插件 JAR 功能完全一致，仅首次生成配置时的默认语言不同。自动更新不会覆盖服务器已有配置。
+
+Release 不再额外上传源码 JAR 或独立校验文件。完整源码与注释继续保留在 [`main`](https://github.com/Lazyzouo/ICUAC/tree/main) 分支。
 
 ## 快速安装
 
@@ -173,7 +173,7 @@ ICUAC 提供命令、背包、NBT、游戏模式、危险坐标、药水、物�
 
 ## 自动更新
 
-插件启动时检查官方 GitHub Release。发现新版本后会校验对应 SHA-256 并下载到服务端更新目录，下次服务器重启时安装。失败时后台会输出官方下载地址。更新器不会上传配置或玩家数据。
+插件启动时检查官方 GitHub Release，并按当前语言选择对应 JAR。文件通过 GitHub 提供的 SHA-256 摘要校验后才会下载到服务端更新目录，并在下次服务器重启时安装。失败时后台会输出官方下载地址。更新器不会上传配置或玩家数据。
 
 ## 兼容范围
 

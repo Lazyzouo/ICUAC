@@ -4,10 +4,15 @@ param(
 
 $projectRoot = Resolve-Path "$PSScriptRoot\.."
 $required = @(
-    "ICUAC-$Version.jar",
-    "ICUAC-$Version-en_US.jar",
-    "ICUAC-$Version-sources.jar"
+    "ICUAC-$Version-zh.cn.jar",
+    "ICUAC-$Version-en.us.jar"
 )
+
+$actual = @(Get-ChildItem -LiteralPath (Join-Path $projectRoot "build\libs") -Filter '*.jar' | Select-Object -ExpandProperty Name)
+$unexpected = @($actual | Where-Object { $_ -notin $required })
+if ($unexpected.Count -gt 0) {
+    throw "Unexpected release artifact(s): $($unexpected -join ', ')"
+}
 
 foreach ($name in $required) {
     $path = Join-Path $projectRoot "build\libs\$name"

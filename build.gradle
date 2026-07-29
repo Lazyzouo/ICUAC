@@ -3,7 +3,7 @@ plugins {
 }
 
 group = 'com.icu.icuac'
-version = '2.0.0'
+version = '2.0.1'
 def pluginAuthor = 'Lazyz'
 
 repositories {
@@ -23,7 +23,6 @@ java {
     def javaVersion = JavaVersion.toVersion(targetJavaVersion)
     sourceCompatibility = javaVersion
     targetCompatibility = javaVersion
-    withSourcesJar()
 }
 
 sourceSets {
@@ -55,9 +54,13 @@ processResources {
     }
 }
 
+tasks.named('jar') {
+    archiveClassifier.set('zh.cn')
+}
+
 tasks.register('englishJar', Jar) {
     dependsOn classes
-    archiveClassifier.set('en_US')
+    archiveClassifier.set('en.us')
     from(sourceSets.main.output) {
         exclude 'config.yml'
     }

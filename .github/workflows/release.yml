@@ -45,12 +45,6 @@ jobs:
       - name: Build release artifacts
         if: steps.version.outputs.exists == 'false'
         run: ./gradlew clean build --no-daemon
-      - name: Generate SHA-256 files
-        if: steps.version.outputs.exists == 'false'
-        working-directory: build/libs
-        shell: bash
-        run: |
-          for file in *.jar; do sha256sum "$file" > "$file.sha256"; done
       - name: Extract bilingual changelog
         if: steps.version.outputs.exists == 'false'
         shell: bash
@@ -68,12 +62,8 @@ jobs:
         run: |
           VERSION="${{ steps.version.outputs.version }}"
           gh release create "v$VERSION" \
-            build/libs/ICUAC-"$VERSION".jar \
-            build/libs/ICUAC-"$VERSION".jar.sha256 \
-            build/libs/ICUAC-"$VERSION"-en_US.jar \
-            build/libs/ICUAC-"$VERSION"-en_US.jar.sha256 \
-            build/libs/ICUAC-"$VERSION"-sources.jar \
-            build/libs/ICUAC-"$VERSION"-sources.jar.sha256 \
+            build/libs/ICUAC-"$VERSION"-zh.cn.jar \
+            build/libs/ICUAC-"$VERSION"-en.us.jar \
             --target "$GITHUB_SHA" \
             --title "ICUAC $VERSION" \
             --notes-file release-notes.md

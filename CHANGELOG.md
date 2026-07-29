@@ -4,6 +4,24 @@ All notable changes are documented here. English is listed first, followed by Ch
 
 所有重要更新均记录于此；英文在前，中文在后。
 
+## [2.0.1] - 2026-07-29
+
+### English
+
+#### Changed
+
+- GitHub Releases now upload only `ICUAC-2.0.1-zh.cn.jar` and `ICUAC-2.0.1-en.us.jar`.
+- Source JARs and standalone checksum files are no longer built or uploaded; source remains available from `main`.
+- The updater now selects the release JAR matching the active language and verifies GitHub's SHA-256 asset digest.
+
+### 中文
+
+#### 变更
+
+- GitHub Release 现在只上传 `ICUAC-2.0.1-zh.cn.jar` 与 `ICUAC-2.0.1-en.us.jar`。
+- 不再构建或上传源码 JAR 与独立校验文件；源码继续保留在 `main`。
+- 自动更新器会按当前语言选择发行 JAR，并校验 GitHub 提供的 SHA-256 资产摘要。
+
 ## [2.0.0] - 2026-07-29
 
 ### English
@@ -66,6 +84,7 @@ All notable changes are documented here. English is listed first, followed by Ch
 - 新增仅 OP 使用的 `/crystallimit bypass` 运行期切换。
 - ICUAC 白名单变化时即时刷新客户端命令树。
 
+[2.0.1]: https://github.com/Lazyzouo/ICUAC/releases/tag/v2.0.1
 [2.0.0]: https://github.com/Lazyzouo/ICUAC/releases/tag/v2.0.0
 [1.1.1]: https://github.com/Lazyzouo/ICUAC/releases/tag/v1.1.1
 [1.1.0]: https://github.com/Lazyzouo/ICUAC/releases/tag/v1.1.0

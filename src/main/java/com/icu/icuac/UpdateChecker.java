@@ -59,19 +59,17 @@ public final class UpdateChecker {
             }
 
             JsonArray assets = release.getAsJsonArray("assets");
-            String jarName = "ICUAC-" + latestVersion + ".jar";
-            String checksumName = jarName + ".sha256";
-            URI jarUri = findAsset(assets, jarName);
-            URI checksumUri = findAsset(assets, checksumName);
-            String expectedChecksum = requestText(checksumUri).trim().split("\\s+", 2)[0];
+            String languageSuffix = activeLanguageSuffix();
+            String jarName = "ICUAC-" + latestVersion + "-" + languageSuffix + ".jar";
+            ReleaseAsset jarAsset = findAsset(assets, jarName);
 
             Path updateDirectory = Bukkit.getUpdateFolderFile().toPath();
             Files.createDirectories(updateDirectory);
             Path temporaryFile = Files.createTempFile(updateDirectory, "icuac-", ".download");
             try {
-                download(jarUri, temporaryFile);
+                download(jarAsset.uri(), temporaryFile);
                 String actualChecksum = sha256(temporaryFile);
-                if (!actualChecksum.equalsIgnoreCase(expectedChecksum)) {
+                if (!actualChecksum.equalsIgnoreCase(jarAsset.sha256())) {
                     throw new IOException("SHA-256 checksum mismatch");
                 }
                 Files.move(temporaryFile, updateDirectory.resolve(jarName), StandardCopyOption.REPLACE_EXISTING);
@@ -122,14 +120,30 @@ public final class UpdateChecker {
                 .header("User-Agent", "ICUAC-UpdateChecker/" + plugin.getDescription().getVersion());
     }
 
-    private URI findAsset(JsonArray assets, String expectedName) throws IOException {
+    private ReleaseAsset findAsset(JsonArray assets, String expectedName) throws IOException {
         for (JsonElement element : assets) {
             JsonObject asset = element.getAsJsonObject();
             if (expectedName.equals(asset.get("name").getAsString())) {
-                return URI.create(asset.get("browser_download_url").getAsString());
+                String digest = asset.has("digest") && !asset.get("digest").isJsonNull()
+                        ? asset.get("digest").getAsString()
+                        : "";
+                if (!digest.matches("(?i)^sha256:[0-9a-f]{64}$")) {
+                    throw new IOException("release asset has no valid SHA-256 digest: " + expectedName);
+                }
+                return new ReleaseAsset(
+                        URI.create(asset.get("browser_download_url").getAsString()),
+                        digest.substring("sha256:".length())
+                );
             }
         }
         throw new IOException("release asset not found: " + expectedName);
+    }
+
+    private String activeLanguageSuffix() {
+        String language = plugin.getConfig().getString("language", "zh_CN");
+        return language != null && language.toLowerCase(java.util.Locale.ROOT).startsWith("en")
+                ? "en.us"
+                : "zh.cn";
     }
 
     private void ensureSuccess(int statusCode) throws IOException {
@@ -170,5 +184,8 @@ public final class UpdateChecker {
     private String safeReason(Exception exception) {
         String message = exception.getMessage();
         return message == null || message.isBlank() ? exception.getClass().getSimpleName() : message.replace('\n', ' ');
+    }
+
+    private record ReleaseAsset(URI uri, String sha256) {
     }
 }
