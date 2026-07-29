@@ -4,6 +4,22 @@ All notable changes are documented here. English is listed first, followed by Ch
 
 所有重要更新均记录于此；英文在前，中文在后。
 
+## [2.0.5] - 2026-07-29
+
+### English
+
+#### Documentation
+
+- Removed the long NBT scope and risk paragraph from the public overview.
+- Replaced the short feature list with a per-module table describing each trigger, action, bypass boundary, language package, updater step, and scheduler role.
+
+### 中文
+
+#### 文档
+
+- 从公开概述中移除大段 NBT 范围与风险说明。
+- 将简短功能列表改为逐模块说明表，明确各功能的触发条件、处置动作、绕过边界、语言包、更新步骤与调度用途。
+
 ## [2.0.4] - 2026-07-29
 
 ### English
@@ -132,6 +148,7 @@ All notable changes are documented here. English is listed first, followed by Ch
 - 新增仅 OP 使用的 `/crystallimit bypass` 运行期切换。
 - ICUAC 白名单变化时即时刷新客户端命令树。
 
+[2.0.5]: https://github.com/Lazyzouo/ICUAC/releases/tag/v2.0.5
 [2.0.4]: https://github.com/Lazyzouo/ICUAC/releases/tag/v2.0.4
 [2.0.3]: https://github.com/Lazyzouo/ICUAC/releases/tag/v2.0.3
 [2.0.2]: https://github.com/Lazyzouo/ICUAC/releases/tag/v2.0.2
