@@ -11,6 +11,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class ICUAC extends JavaPlugin {
+    private static final int BANNER_WIDTH = 56;
+    private static final String CONSOLE_PREFIX = "&#00D2FF[&#3A7BD5ICUAC&#00D2FF] &8» ";
     private static ICUAC instance;
     private WhitelistManager whitelistManager;
     private ItemChecker itemChecker;
@@ -63,6 +65,7 @@ public class ICUAC extends JavaPlugin {
         }, 1L, checkInterval);
 
         printStartupBanner();
+        logLocalized("plugin-enabled", "platform", detectServerPlatform());
         updateChecker = new UpdateChecker(this);
         updateChecker.checkOnStartup();
     }
@@ -147,7 +150,7 @@ public class ICUAC extends JavaPlugin {
         if (whitelistManager != null) whitelistManager.saveWhitelist();
         if (gameModeGuard != null) gameModeGuard.stop();
         if (crystalPVPFeature != null) crystalPVPFeature.clear();
-        getLogger().info("ICUAC disabled.");
+        logConsole("&cICUAC v" + getDescription().getVersion() + " disabled.");
     }
 
     public static ICUAC getInstance() { return instance; }
@@ -164,20 +167,72 @@ public class ICUAC extends JavaPlugin {
         for (int i = 0; i + 1 < replacements.length; i += 2) {
             message = message.replace("{" + replacements[i] + "}", replacements[i + 1]);
         }
-        message = message.replaceAll("(?i)&#[0-9a-f]{6}", "").replaceAll("(?i)&[0-9a-fk-or]", "");
-        getLogger().info(message);
+        message = message
+                .replace("{name}", getDescription().getName())
+                .replace("{version}", getDescription().getVersion())
+                .replace("{author}", getDescription().getAuthors().isEmpty()
+                        ? "Lazyz"
+                        : getDescription().getAuthors().get(0));
+        String statusColor = switch (path) {
+            case "update-checking" -> "&b";
+            case "plugin-enabled", "update-latest", "update-downloaded" -> "&a";
+            case "update-available", "update-manual" -> "&e";
+            case "update-failed" -> "&c";
+            default -> "&7";
+        };
+        logConsole(statusColor + message);
     }
 
     private void printStartupBanner() {
         String version = getDescription().getVersion();
-        getLogger().info("+================================================+");
-        getLogger().info("|              ICUAC SECURITY CORE               |");
-        getLogger().info("| Version / 版本 : " + version);
-        getLogger().info("| Author  / 作者 : Lazyz");
-        getLogger().info("| Tested  / 测试 : Paper & Folia 1.21.11");
-        getLogger().info("| Language/ 语言 : " + languageManager.getLanguage());
-        getLogger().info("| GitHub         : https://github.com/Lazyzouo/ICUAC");
-        getLogger().info("+================================================+");
+        logConsole("&3+" + "=".repeat(BANNER_WIDTH) + "+");
+        logConsole(centerBannerLine("ICUAC v" + version));
+        logConsole(bannerField("Version / 版本", version, "&a"));
+        logConsole(bannerField("Author  / 作者", "Lazyz", "&e"));
+        logConsole(bannerField("Tested  / 测试", "Paper & Folia 1.21.11", "&a"));
+        logConsole(bannerField("Language/ 语言", languageManager.getLanguage(), "&b"));
+        logConsole(bannerField("GitHub", "https://github.com/Lazyzouo/ICUAC", "&9"));
+        logConsole(bannerNotice(
+                "Open source | No telemetry or server data upload.",
+                "&aOpen source &8| &fNo telemetry or server data upload."
+        ));
+        logConsole("&3+" + "=".repeat(BANNER_WIDTH) + "+");
+    }
+
+    public void logConsole(String message) {
+        MessageUtils.sendRaw(getServer().getConsoleSender(), CONSOLE_PREFIX + message);
+    }
+
+    private String centerBannerLine(String text) {
+        int leftPadding = Math.max(0, (BANNER_WIDTH - displayWidth(text)) / 2);
+        int rightPadding = Math.max(0, BANNER_WIDTH - displayWidth(text) - leftPadding);
+        return "&3|" + " ".repeat(leftPadding) + "&b" + text
+                + "&3" + " ".repeat(rightPadding) + "|";
+    }
+
+    private String bannerField(String label, String value, String valueColor) {
+        String plain = label + " : " + value;
+        int padding = Math.max(1, BANNER_WIDTH - 1 - displayWidth(plain));
+        return "&3| &f" + label + " &8: " + valueColor + value
+                + "&3" + " ".repeat(padding) + "|";
+    }
+
+    private String bannerNotice(String plain, String styled) {
+        int padding = Math.max(1, BANNER_WIDTH - 1 - displayWidth(plain));
+        return "&3| " + styled + "&3" + " ".repeat(padding) + "|";
+    }
+
+    private int displayWidth(String text) {
+        return text.codePoints().map(codePoint -> codePoint <= 0x7F ? 1 : 2).sum();
+    }
+
+    private String detectServerPlatform() {
+        try {
+            Class.forName("io.papermc.paper.threadedregions.RegionizedServer", false, getClass().getClassLoader());
+            return "Folia";
+        } catch (ClassNotFoundException ignored) {
+            return "Paper";
+        }
     }
 
     public void reloadFeatures() {

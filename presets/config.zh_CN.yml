@@ -243,6 +243,7 @@ messages:
   update-downloaded: '新版本 {version} 已下载，将在下次服务器重启时安装。'
   update-failed: '自动更新失败：{reason}。请前往 {url} 手动下载。'
   update-manual: '新版本 {version} 可用，请前往 {url} 下载。'
+  plugin-enabled: '{name} v{version} by {author} 已在 {platform} 核心上成功启动！'
 
   # 帮助菜单（沿用 WRTP 的分区逻辑，采用 ICUAC 独立的安全控制台样式）
   help-menu:

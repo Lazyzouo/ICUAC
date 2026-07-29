@@ -1,6 +1,6 @@
 # ICUAC Administrator Guide / ICUAC 管理员指南
 
-> Version: 2.0.5
+> Version: 2.1.0
 > Tested: Paper/Folia 1.21.11
 > Java: 21
 
@@ -25,7 +25,7 @@ Repository presets are official generic defaults. They are not intended to conta
 
 ### Release Authenticity
 
-Use only the exact `ICUAC-<version>-en.us.jar` or `ICUAC-<version>-zh.cn.jar` asset from the official `Lazyzouo/ICUAC` GitHub Release. Source code archives are not installable plugin JARs. Renamed files, modified builds, third-party mirrors, and reuploads are outside the official distribution and cannot be authenticated by ICUAC's release process.
+Use only the exact `ICUAC-<version>-en.us.jar` or `ICUAC-<version>-zh.cn.jar` asset from the official `Lazyzouo/ICUAC` GitHub Release. Source code archives are not installable plugin JARs. Renamed files, modified builds, third-party mirrors, and reuploads are outside the official distribution and cannot be authenticated by ICUAC's release process. Official automation validates these two exact build names and uploads them without renaming; missing, renamed, additional, source, alias, or checksum assets cause the Release build to fail.
 
 ### Whitelist Scope
 
@@ -61,6 +61,10 @@ Use `/icuac reload` for normal configuration changes. It reloads language, white
 
 At startup the updater calls the official `Lazyzouo/ICUAC` latest-release endpoint. It selects `ICUAC-<version>-en.us.jar` for English mode or `ICUAC-<version>-zh.cn.jar` for Chinese mode, and requires GitHub's asset metadata to contain a valid matching SHA-256 digest. The file is staged for the next restart. Network, API, asset, write, or checksum failures are logged with the official Releases URL.
 
+### Console Presentation
+
+Startup prints a fixed-width bilingual banner containing the ICUAC version, author, Paper/Folia 1.21.11 test baseline, active language, repository, open-source privacy statement, and detected Paper or Folia platform. Player-facing messages and console text are bold, except pure decorative help-menu divider lines, which remain unbold for alignment. The ICUAC console prefix keeps one blue palette while status text uses aqua for checking, green for success/latest/downloaded, yellow for a new/manual version, and red for failures.
+
 ### Deployment Checklist
 
 1. Back up configuration, whitelist, worlds, and player data.
@@ -94,7 +98,7 @@ ICUAC 同时包含预防拦截与破坏性处置。不同模块可能取消事�
 
 ### 发行文件真伪
 
-请只使用官方 `Lazyzouo/ICUAC` GitHub Release 中名称精确为 `ICUAC-<版本>-en.us.jar` 或 `ICUAC-<版本>-zh.cn.jar` 的资源。Source code 源码压缩包不是可安装插件；重命名文件、修改版、第三方镜像及转载文件不属于官方发行范围，也无法由 ICUAC 官方发布流程验证。
+请只使用官方 `Lazyzouo/ICUAC` GitHub Release 中名称精确为 `ICUAC-<版本>-en.us.jar` 或 `ICUAC-<版本>-zh.cn.jar` 的资源。Source code 源码压缩包不是可安装插件；重命名文件、修改版、第三方镜像及转载文件不属于官方发行范围，也无法由 ICUAC 官方发布流程验证。官方自动化会校验这两个构建文件的精确名称并保持原名上传；缺失、改名、多余、源码、别名或校验文件都会让 Release 构建失败。
 
 ### 白名单范围
 
@@ -129,6 +133,10 @@ ICUAC 白名单会绕过命令拦截/Tab 隐藏、背包安全、NBT、附魔、
 ### 自动更新
 
 插件启动时检查 `Lazyzouo/ICUAC` 的最新 Release。英文模式选择 `ICUAC-<版本>-en.us.jar`，中文模式选择 `ICUAC-<版本>-zh.cn.jar`；只有 GitHub 资产元数据提供有效且匹配的 SHA-256 摘要时，文件才会进入服务端更新目录，并在下次重启安装。任何失败都会在后台输出原因及官方下载地址。
+
+### 后台显示
+
+启动时会输出固定宽度的双语横幅，包含 ICUAC 版本、作者、Paper/Folia 1.21.11 测试基线、当前语言、仓库、开源隐私声明及实际识别的 Paper 或 Folia 核心。玩家消息与后台文字统一使用粗体；帮助菜单中的纯装饰分割线继续保持非粗体，确保对齐。后台 ICUAC 前缀固定使用同一套蓝色，状态文字则以青色表示检查、绿色表示成功/最新版/下载完成、黄色表示发现新版/手动下载、红色表示失败。
 
 ### 部署检查
 

@@ -17,6 +17,7 @@ messages:
   update-downloaded: 'Version {version} was downloaded and will be installed on the next server restart.'
   update-failed: 'Automatic update failed: {reason}. Download manually from {url}.'
   update-manual: 'Version {version} is available. Download it from {url}.'
+  plugin-enabled: '{name} v{version} by {author} started successfully on {platform}.'
 
   help-menu:
     - '&#FF5E62--------&#FF9966--------&#F2C94C ✧ &#FF9966--------&#FF5E62--------'

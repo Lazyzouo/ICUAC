@@ -4,6 +4,32 @@ All notable changes are documented here. English is listed first, followed by Ch
 
 所有重要更新均记录于此；英文在前，中文在后。
 
+## [2.1.0] - 2026-07-29
+
+### English
+
+#### Added
+
+- Added a bilingual, fixed-width startup console banner with the version, author, tested baseline, active language, repository, privacy statement, and detected Paper/Folia platform.
+- Added consistent semantic colors to startup, shutdown, update-check, latest-version, available-version, downloaded-version, manual-download, and update-failure console notices.
+
+#### Changed
+
+- All user-facing and console message text is now rendered in bold while decorative help-menu divider lines remain unbold for alignment.
+- Locked official Release asset names to `ICUAC-MAJOR.MINOR.PATCH-en.us.jar` and `ICUAC-MAJOR.MINOR.PATCH-zh.cn.jar`; CI now rejects missing, renamed, or additional JARs before publishing.
+
+### 中文
+
+#### 新增
+
+- 新增固定宽度的双语启动后台横幅，显示版本、作者、测试基线、当前语言、仓库、隐私声明及实际 Paper/Folia 核心。
+- 为启动、停用、检查更新、已是最新版、发现新版、下载完成、手动下载及更新失败等后台通知加入对应状态颜色。
+
+#### 调整
+
+- 所有玩家消息与后台文字统一以粗体显示；帮助菜单的纯装饰分割线继续保持非粗体，确保对齐。
+- 官方 Release 文件名强制固定为 `ICUAC-MAJOR.MINOR.PATCH-en.us.jar` 与 `ICUAC-MAJOR.MINOR.PATCH-zh.cn.jar`，CI 会在发布前拒绝缺失、改名或多余 JAR。
+
 ## [2.0.5] - 2026-07-29
 
 ### English
@@ -148,6 +174,7 @@ All notable changes are documented here. English is listed first, followed by Ch
 - 新增仅 OP 使用的 `/crystallimit bypass` 运行期切换。
 - ICUAC 白名单变化时即时刷新客户端命令树。
 
+[2.1.0]: https://github.com/Lazyzouo/ICUAC/releases/tag/v2.1.0
 [2.0.5]: https://github.com/Lazyzouo/ICUAC/releases/tag/v2.0.5
 [2.0.4]: https://github.com/Lazyzouo/ICUAC/releases/tag/v2.0.4
 [2.0.3]: https://github.com/Lazyzouo/ICUAC/releases/tag/v2.0.3

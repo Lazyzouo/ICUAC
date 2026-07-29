@@ -22,3 +22,9 @@
 - Keep the tested server baseline visible as Paper/Folia `1.21.11` until a later version is explicitly tested.
 - After a completed and verified update, commit all intended files and push `main` to `origin`. The local post-commit hook performs the push when GitHub authentication is available.
 - GitHub Actions creates the matching `vMAJOR.MINOR.PATCH` Release automatically from `CHANGELOG.md`; do not manually upload unverified JARs.
+
+## Release Asset Integrity
+
+- Release asset names are immutable and must be exactly `ICUAC-MAJOR.MINOR.PATCH-en.us.jar` and `ICUAC-MAJOR.MINOR.PATCH-zh.cn.jar`.
+- Never rename a built JAR during upload and never publish aliases such as `latest.jar`, source JARs, checksum sidecars, or additional downloadable binaries.
+- The Release workflow must run `scripts/verify-release.ps1` before publishing and fail if either required JAR is missing or any unexpected JAR exists.

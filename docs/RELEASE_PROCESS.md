@@ -7,10 +7,12 @@ ICUAC releases are automated from `main`.
 1. Update `build.gradle` using semantic versioning.
 2. Update both official presets and bilingual documentation when relevant.
 3. Add an English-first, Chinese-second section to `CHANGELOG.md` named `## [VERSION]`.
-4. Run `./gradlew clean build` and inspect both language JARs.
+4. Run `./gradlew clean build` and `scripts/verify-release.ps1`; inspect both language JARs.
 5. Commit to `main`; the configured local post-commit hook pushes when authentication is available.
-6. GitHub Actions builds from a clean checkout, prepends `.github/RELEASE_NOTICE.md` to the matching changelog section, creates tag `vVERSION`, and uploads only the `zh.cn` and `en.us` JARs.
+6. GitHub Actions builds from a clean checkout, verifies the exact artifact names, prepends `.github/RELEASE_NOTICE.md` to the matching changelog section, creates tag `vVERSION`, and uploads only `ICUAC-VERSION-zh.cn.jar` and `ICUAC-VERSION-en.us.jar` without renaming.
 7. Verify CI, CodeQL, the official notice, the two release assets, GitHub-provided asset digests, and updater compatibility.
+
+Release asset names are immutable. Aliases, renamed uploads, source JARs, checksum sidecars, and additional downloadable binaries are prohibited.
 
 A version already present in GitHub Releases is not republished. Every functional update must therefore have a new version.
 
@@ -21,9 +23,11 @@ ICUAC 从 `main` 自动发布：
 1. 按语义化版本更新 `build.gradle`。
 2. 需要时同步两个官方预设及双语文档。
 3. 在 `CHANGELOG.md` 新增英文在前、中文在后的 `## [版本]` 区块。
-4. 执行 `./gradlew clean build` 并检查两个语言 JAR。
+4. 执行 `./gradlew clean build` 与 `scripts/verify-release.ps1`，并检查两个语言 JAR。
 5. 提交到 `main`；GitHub 认证可用时，本地 post-commit Hook 自动推送。
-6. GitHub Actions 在干净环境构建，将 `.github/RELEASE_NOTICE.md` 置于对应更新日志之前，创建 `v版本` 标签，并只上传 `zh.cn` 与 `en.us` 两个 JAR。
+6. GitHub Actions 在干净环境构建，校验精确文件名，将 `.github/RELEASE_NOTICE.md` 置于对应更新日志之前，创建 `v版本` 标签，并保持原名上传 `ICUAC-版本-zh.cn.jar` 与 `ICUAC-版本-en.us.jar`。
 7. 检查 CI、CodeQL、官方声明、两个发行文件、GitHub 提供的资产摘要及更新器兼容性。
+
+Release 文件名不可更改；禁止别名、改名上传、源码 JAR、独立校验文件及其他可下载二进制。
 
 已有 GitHub Release 的版本不会重复发布，因此每次功能更新都必须使用新版本号。
