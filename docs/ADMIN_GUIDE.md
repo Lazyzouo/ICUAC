@@ -1,6 +1,6 @@
 # ICUAC Administrator Guide / ICUAC 管理员指南
 
-> Version: 2.0.2
+> Version: 2.0.3
 > Tested: Paper/Folia 1.21.11
 > Java: 21
 
@@ -22,6 +22,10 @@ ICUAC combines preventive checks with destructive remediation. Depending on the 
 - Server update directory: receives a verified new JAR when auto-download succeeds.
 
 Repository presets are official generic defaults. They are not intended to contain a specific server's world names or private settings.
+
+### Release Authenticity
+
+Use only the exact `ICUAC-<version>-en.us.jar` or `ICUAC-<version>-zh.cn.jar` asset from the official `Lazyzouo/ICUAC` GitHub Release. Source code archives are not installable plugin JARs. Renamed files, modified builds, third-party mirrors, and reuploads are outside the official distribution and cannot be authenticated by ICUAC's release process.
 
 ### Whitelist Scope
 
@@ -87,6 +91,10 @@ ICUAC 同时包含预防拦截与破坏性处置。不同模块可能取消事�
 - 服务端更新目录：自动更新校验成功后存放待安装 JAR。
 
 仓库中的配置是官方通用预设，不应保存具体服务器的世界名或私人参数。
+
+### 发行文件真伪
+
+请只使用官方 `Lazyzouo/ICUAC` GitHub Release 中名称精确为 `ICUAC-<版本>-en.us.jar` 或 `ICUAC-<版本>-zh.cn.jar` 的资源。Source code 源码压缩包不是可安装插件；重命名文件、修改版、第三方镜像及转载文件不属于官方发行范围，也无法由 ICUAC 官方发布流程验证。
 
 ### 白名单范围
 

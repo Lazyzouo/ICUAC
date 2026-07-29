@@ -20,7 +20,7 @@
 
 ICUAC protects commands, inventories, NBT data, game modes, dangerous locations, potion effects, item stacks, and end-crystal attack timing. It ships with Simplified Chinese and English editions, official safe presets, Folia-aware scheduling, and a verified GitHub auto-updater.
 
-> Current version: **2.0.2**
+> Current version: **2.0.3**
 > Tested server version: **Paper/Folia 1.21.11**
 > Required Java version: **21**
 > Author: **Lazyz**
@@ -29,10 +29,12 @@ ICUAC protects commands, inventories, NBT data, game modes, dangerous locations,
 
 Download only from [GitHub Releases](https://github.com/Lazyzouo/ICUAC/releases/latest).
 
+**Official download notice:** Install only an exact `en.us.jar` or `zh.cn.jar` asset published by `Lazyzouo/ICUAC`. GitHub's automatically generated Source code archives and files from third-party mirrors are not installable official plugin builds.
+
 | Asset | Default language | Use case |
 | --- | --- | --- |
-| `ICUAC-2.0.2-zh.cn.jar` | Simplified Chinese (`zh_CN`) | Chinese server administrators |
-| `ICUAC-2.0.2-en.us.jar` | English (`en_US`) | English server administrators |
+| `ICUAC-2.0.3-zh.cn.jar` | Simplified Chinese (`zh_CN`) | Chinese server administrators |
+| `ICUAC-2.0.3-en.us.jar` | English (`en_US`) | English server administrators |
 
 Both plugin JARs contain the same features. The only difference is the first-run language preset. Existing server configuration is preserved during updates.
 
@@ -139,7 +141,7 @@ ICUAC is released under the [MIT License](LICENSE).
 
 ICUAC 提供命令、背包、NBT、游戏模式、危险坐标、药水、物品堆叠和末地水晶攻击间隔保护，并内置简体中文及英文版本、官方安全预设、Folia 调度兼容和经过 SHA-256 校验的 GitHub 自动更新。
 
-> 当前版本：**2.0.2**
+> 当前版本：**2.0.3**
 > 已测试服务端版本：**Paper/Folia 1.21.11**
 > Java 要求：**21**
 > 作者：**Lazyz**
@@ -148,8 +150,10 @@ ICUAC 提供命令、背包、NBT、游戏模式、危险坐标、药水、物�
 
 请只从 [GitHub Releases](https://github.com/Lazyzouo/ICUAC/releases/latest) 下载：
 
-- `ICUAC-2.0.2-zh.cn.jar`：默认简体中文。
-- `ICUAC-2.0.2-en.us.jar`：默认英文。
+**官方下载声明：** 请只安装由 `Lazyzouo/ICUAC` 发布且文件名精确包含 `en.us.jar` 或 `zh.cn.jar` 的资源。GitHub 自动生成的 Source code 源码压缩包及第三方镜像提供的文件都不是可安装的官方插件构建。
+
+- `ICUAC-2.0.3-zh.cn.jar`：默认简体中文。
+- `ICUAC-2.0.3-en.us.jar`：默认英文。
 
 两个插件 JAR 功能完全一致，仅首次生成配置时的默认语言不同。自动更新不会覆盖服务器已有配置。
 

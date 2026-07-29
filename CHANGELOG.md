@@ -4,6 +4,22 @@ All notable changes are documented here. English is listed first, followed by Ch
 
 所有重要更新均记录于此；英文在前，中文在后。
 
+## [2.0.3] - 2026-07-29
+
+### English
+
+#### Added
+
+- Added a bilingual official-release notice that is automatically prepended to every GitHub Release.
+- Identified the two installable language JARs and warned against source archives, renamed files, modified builds, third-party mirrors, and reuploads.
+
+### 中文
+
+#### 新增
+
+- 新增自动置于每个 GitHub Release 顶部的中英双语官方发布声明。
+- 明确两个可安装语言 JAR，并提示不要误用源码压缩包、重命名文件、修改版、第三方镜像或转载文件。
+
 ## [2.0.2] - 2026-07-29
 
 ### English
@@ -100,6 +116,7 @@ All notable changes are documented here. English is listed first, followed by Ch
 - 新增仅 OP 使用的 `/crystallimit bypass` 运行期切换。
 - ICUAC 白名单变化时即时刷新客户端命令树。
 
+[2.0.3]: https://github.com/Lazyzouo/ICUAC/releases/tag/v2.0.3
 [2.0.2]: https://github.com/Lazyzouo/ICUAC/releases/tag/v2.0.2
 [2.0.1]: https://github.com/Lazyzouo/ICUAC/releases/tag/v2.0.1
 [2.0.0]: https://github.com/Lazyzouo/ICUAC/releases/tag/v2.0.0
