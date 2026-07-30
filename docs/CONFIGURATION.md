@@ -1,6 +1,6 @@
 # Configuration Reference / 配置参考
 
-> ICUAC 2.1.1 · Paper/Folia 1.21.11 · Java 21
+> ICUAC 2.1.2 · Paper/Folia 1.21.11 · Java 21
 
 ## English
 
@@ -57,7 +57,7 @@ Important constraints:
 
 ### Messages
 
-Chinese mode reads `messages` from `config.yml`, preserving legacy customization. English mode reads `plugins/ICUAC/lang/en_US.yml` and falls back to the config message when a key is missing. Legacy `&` colors and `&#RRGGBB` colors are supported.
+Chinese mode reads `messages` from `config.yml`, preserving legacy customization. English mode reads `plugins/ICUAC/lang/en_US.yml` and falls back to the config message when a key is missing. Legacy `&` colors and `&#RRGGBB` colors are parsed, but player-visible foreground colors are replaced at send time by the continuous `#00D2FF` → `#3A7BD5` → `#F2C94C` gradient and all readable text is forced bold. Console output keeps its configured colors; pure decorative divider lines stay unbold.
 
 ---
 
@@ -115,4 +115,4 @@ Chinese mode reads `messages` from `config.yml`, preserving legacy customization
 
 ### 消息
 
-中文模式读取 `config.yml` 的 `messages`，保持旧版自定义兼容；英文模式读取 `plugins/ICUAC/lang/en_US.yml`，缺少键时回退到配置消息。支持 `&` 与 `&#RRGGBB` 颜色。
+中文模式读取 `config.yml` 的 `messages`，保持旧版自定义兼容；英文模式读取 `plugins/ICUAC/lang/en_US.yml`，缺少键时回退到配置消息。插件仍会解析 `&` 与 `&#RRGGBB` 颜色，但玩家可见文字的前景色会在发送时统一替换为连续的 `#00D2FF` → `#3A7BD5` → `#F2C94C` 渐变，且全部可读文字强制粗体。后台保留配置颜色，纯装饰分割线保持非粗体。

@@ -1,6 +1,6 @@
 # ICUAC Administrator Guide / ICUAC 管理员指南
 
-> Version: 2.1.1
+> Version: 2.1.2
 > Tested: Paper/Folia 1.21.11
 > Java: 21
 
@@ -63,7 +63,7 @@ At startup the updater calls the official `Lazyzouo/ICUAC` latest-release endpoi
 
 ### Console Presentation
 
-Startup prints a fixed-width bilingual banner containing the ICUAC version, author, Paper/Folia 1.21.11 test baseline, active language, repository, open-source privacy statement, and detected Paper or Folia platform. Its upper and lower dividers use equal-length halves around a centered `✧`; every non-help banner line is centered on that axis using CJK-aware display widths. Every player-visible text component and console line is forced bold, while pure decorative help-menu divider glyphs remain unbold for alignment. The help-menu layout itself is unchanged. The ICUAC console prefix keeps one blue palette while status text uses aqua for checking, green for success/latest/downloaded, yellow for a new/manual version, and red for failures.
+Startup prints a fixed-width bilingual banner containing an `ICUAC ADMINISTRATION` version heading, a `SERVER SECURITY CONTROL / 服务器安全管理` subtitle, a star-centered section divider, version, author, Paper/Folia 1.21.11 test baseline, active language, repository, open-source privacy statement, and detected Paper or Folia platform. Its upper and lower dividers retain equal-length halves around a centered `✧`; every content row starts one space from the left border and is padded on the right to preserve the fixed width. Every player-visible message line is forced bold and receives a continuous `#00D2FF` → `#3A7BD5` → `#F2C94C` gradient. Pure decorative divider glyphs receive the gradient but remain unbold for alignment, and the help-menu layout itself is unchanged. Console lines keep their configured field or semantic status colors: aqua for checking, green for success/latest/downloaded, yellow for a new/manual version, and red for failures.
 
 ### Deployment Checklist
 
@@ -136,7 +136,7 @@ ICUAC 白名单会绕过命令拦截/Tab 隐藏、背包安全、NBT、附魔、
 
 ### 后台显示
 
-启动时会输出固定宽度的双语横幅，包含 ICUAC 版本、作者、Paper/Folia 1.21.11 测试基线、当前语言、仓库、开源隐私声明及实际识别的 Paper 或 Folia 核心。上下分割线以居中的 `✧` 分成等长两侧，所有非 help 横幅文字均按中英文显示宽度居中到该轴线。所有玩家可见文字组件及后台行都强制使用粗体；help 菜单布局保持不变，纯装饰分割线继续保持非粗体以确保对齐。后台 ICUAC 前缀固定使用同一套蓝色，状态文字则以青色表示检查、绿色表示成功/最新版/下载完成、黄色表示发现新版/手动下载、红色表示失败。
+启动时会输出固定宽度的双语横幅，包含 `ICUAC ADMINISTRATION` 版本主标题、`SERVER SECURITY CONTROL / 服务器安全管理` 副标题、星号章节分隔线、版本、作者、Paper/Folia 1.21.11 测试基线、当前语言、仓库、开源隐私声明及实际识别的 Paper 或 Folia 核心。上下分割线继续以居中的 `✧` 分成等长两侧；所有内容行距左边框一个空格并统一左对齐，右侧自动补空格以保持固定宽度。所有玩家可见消息行均强制使用粗体，并连续应用 `#00D2FF` → `#3A7BD5` → `#F2C94C` 渐变；纯装饰分割线也应用渐变，但继续保持非粗体以确保对齐，help 菜单布局本身不变。后台文字保留字段色与状态色：青色表示检查、绿色表示成功/最新版/下载完成、黄色表示发现新版/手动下载、红色表示失败。
 
 ### 部署检查
 

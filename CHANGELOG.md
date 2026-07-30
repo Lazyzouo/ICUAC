@@ -4,6 +4,24 @@ All notable changes are documented here. English is listed first, followed by Ch
 
 所有重要更新均记录于此；英文在前，中文在后。
 
+## [2.1.2] - 2026-07-30
+
+### English
+
+#### Changed
+
+- Applied a continuous three-stop `#00D2FF` → `#3A7BD5` → `#F2C94C` gradient to every player-visible message line while preserving forced bold text, placeholders, and component interaction styles. Pure decorative divider lines remain unbold.
+- Changed every startup console banner content row from centered alignment to a consistent one-space left inset; the fixed width, equal divider halves, console prefix, and semantic status colors are unchanged.
+- Added an `ICUAC ADMINISTRATION` version heading, a bilingual server-security-control subtitle, and a star-centered section divider above the startup banner fields.
+
+### 中文
+
+#### 调整
+
+- 所有玩家可见消息行统一应用连续的 `#00D2FF` → `#3A7BD5` → `#F2C94C` 三段渐变，同时保留强制粗体、占位符及组件交互样式；纯装饰分割线继续保持非粗体。
+- 启动后台横幅的全部内容行由居中改为距左边框一个空格并统一左对齐；固定宽度、等长分割线、后台前缀及状态色保持不变。
+- 启动横幅字段上方新增 `ICUAC ADMINISTRATION` 版本主标题、中英服务器安全管理副标题及以星号为中心的章节分隔线。
+
 ## [2.1.1] - 2026-07-29
 
 ### English
@@ -190,6 +208,7 @@ All notable changes are documented here. English is listed first, followed by Ch
 - 新增仅 OP 使用的 `/crystallimit bypass` 运行期切换。
 - ICUAC 白名单变化时即时刷新客户端命令树。
 
+[2.1.2]: https://github.com/Lazyzouo/ICUAC/releases/tag/v2.1.2
 [2.1.1]: https://github.com/Lazyzouo/ICUAC/releases/tag/v2.1.1
 [2.1.0]: https://github.com/Lazyzouo/ICUAC/releases/tag/v2.1.0
 [2.0.5]: https://github.com/Lazyzouo/ICUAC/releases/tag/v2.0.5

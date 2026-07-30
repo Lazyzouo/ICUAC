@@ -12,6 +12,7 @@ import java.util.regex.Pattern;
 
 public class ICUAC extends JavaPlugin {
     private static final int BANNER_WIDTH = 57;
+    private static final int BANNER_LEFT_PADDING = 1;
     private static final String CONSOLE_PREFIX = "&#00D2FF[&#3A7BD5ICUAC&#00D2FF] &8» ";
     private static ICUAC instance;
     private WhitelistManager whitelistManager;
@@ -185,8 +186,12 @@ public class ICUAC extends JavaPlugin {
 
     private void printStartupBanner() {
         String version = getDescription().getVersion();
+        String title = "ICUAC ADMINISTRATION v" + version;
+        String subtitle = "SERVER SECURITY CONTROL / \u670d\u52a1\u5668\u5b89\u5168\u7ba1\u7406";
         logConsole(bannerDivider());
-        logConsole(centerBannerLine("ICUAC v" + version, "&bICUAC v" + version));
+        logConsole(leftBannerLine(title, "&b" + title));
+        logConsole(leftBannerLine(subtitle, "&f" + subtitle));
+        logConsole(bannerSectionDivider());
         logConsole(bannerField("Version / 版本", version, "&a"));
         logConsole(bannerField("Author  / 作者", "Lazyz", "&e"));
         logConsole(bannerField("Tested  / 测试", "Paper & Folia 1.21.11", "&a"));
@@ -208,20 +213,24 @@ public class ICUAC extends JavaPlugin {
         return "&3+" + "=".repeat(sideWidth) + "&b✧&3" + "=".repeat(sideWidth) + "+";
     }
 
-    private String centerBannerLine(String plain, String styled) {
-        int leftPadding = Math.max(0, (BANNER_WIDTH - displayWidth(plain)) / 2);
-        int rightPadding = Math.max(0, BANNER_WIDTH - displayWidth(plain) - leftPadding);
-        return "&3|" + " ".repeat(leftPadding) + styled
+    private String bannerSectionDivider() {
+        int sideWidth = (BANNER_WIDTH - 1) / 2;
+        return "&3+" + "-".repeat(sideWidth) + "&b\u2727&3" + "-".repeat(sideWidth) + "+";
+    }
+
+    private String leftBannerLine(String plain, String styled) {
+        int rightPadding = Math.max(0, BANNER_WIDTH - displayWidth(plain) - BANNER_LEFT_PADDING);
+        return "&3|" + " ".repeat(BANNER_LEFT_PADDING) + styled
                 + "&3" + " ".repeat(rightPadding) + "|";
     }
 
     private String bannerField(String label, String value, String valueColor) {
         String plain = label + " : " + value;
-        return centerBannerLine(plain, "&f" + label + " &8: " + valueColor + value);
+        return leftBannerLine(plain, "&f" + label + " &8: " + valueColor + value);
     }
 
     private String bannerNotice(String plain, String styled) {
-        return centerBannerLine(plain, styled);
+        return leftBannerLine(plain, styled);
     }
 
     private int displayWidth(String text) {
