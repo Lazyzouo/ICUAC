@@ -22,7 +22,7 @@ ICUAC applies configurable server-side rules for commands, player state, locatio
 
 The project provides Simplified Chinese and English default packages, Folia-aware scheduling, official generic presets, and an updater that downloads only language-matched GitHub Release assets after verifying GitHub's SHA-256 digest.
 
-> Current version: **2.1.2**
+> Current version: **2.1.3**
 > Tested server version: **Paper/Folia 1.21.11**
 > Required Java version: **21**
 > Author: **Lazyz**
@@ -35,8 +35,8 @@ Download only from [GitHub Releases](https://github.com/Lazyzouo/ICUAC/releases/
 
 | Asset | Default language | Use case |
 | --- | --- | --- |
-| `ICUAC-2.1.2-zh.cn.jar` | Simplified Chinese (`zh_CN`) | Chinese server administrators |
-| `ICUAC-2.1.2-en.us.jar` | English (`en_US`) | English server administrators |
+| `ICUAC-2.1.3-zh.cn.jar` | Simplified Chinese (`zh_CN`) | Chinese server administrators |
+| `ICUAC-2.1.3-en.us.jar` | English (`en_US`) | English server administrators |
 
 Both plugin JARs contain the same features. The only difference is the first-run language preset. Existing server configuration is preserved during updates.
 
@@ -60,7 +60,7 @@ No source JAR or standalone checksum file is uploaded as a Release asset. The co
 | End crystals | Cancels crystal damage attempts made sooner than `crystal.hit-interval` in every game mode; an OP can toggle a runtime-only personal bypass. |
 | Languages | Provides Chinese-default and English-default JARs with matching messages and complete official presets. |
 | Player messages | Renders every in-game line in bold with a continuous `#00D2FF` → `#3A7BD5` → `#F2C94C` gradient; pure decorative divider lines stay unbold to preserve alignment. |
-| Console presentation | Uses a consistent ICUAC prefix, bold text, a fixed-width bilingual startup banner with an `ICUAC ADMINISTRATION` version heading, a bilingual security-control subtitle, a star-centered section divider, and content left-aligned one space from the border. |
+| Console presentation | Uses a 76-character aqua frame without the normal message prefix, centers the `ICUAC ADMINISTRATION` version heading and bilingual security-control subtitle, separates the header with a full-width equals line, and aligns all colored field labels and values in fixed columns. |
 | Automatic updates | Checks the official GitHub Release at startup, selects the active-language JAR, verifies GitHub's SHA-256 digest, and stages the file for the next restart. |
 | Scheduling | Uses Paper/Folia-compatible global, region, entity, and asynchronous scheduling where each task requires it. |
 
@@ -152,7 +152,7 @@ ICUAC 针对命令、玩家状态、坐标、物品、药水效果和末地水�
 
 项目提供简体中文与英文默认包、Folia 调度兼容、官方通用参数预设，以及只下载当前语言 GitHub Release 资产并校验 GitHub SHA-256 摘要的自动更新器。
 
-> 当前版本：**2.1.2**
+> 当前版本：**2.1.3**
 > 已测试服务端版本：**Paper/Folia 1.21.11**
 > Java 要求：**21**
 > 作者：**Lazyz**
@@ -163,8 +163,8 @@ ICUAC 针对命令、玩家状态、坐标、物品、药水效果和末地水�
 
 **官方下载声明：** 请只安装由 `Lazyzouo/ICUAC` 发布且文件名精确包含 `en.us.jar` 或 `zh.cn.jar` 的资源。GitHub 自动生成的 Source code 源码压缩包及第三方镜像提供的文件都不是可安装的官方插件构建。
 
-- `ICUAC-2.1.2-zh.cn.jar`：默认简体中文。
-- `ICUAC-2.1.2-en.us.jar`：默认英文。
+- `ICUAC-2.1.3-zh.cn.jar`：默认简体中文。
+- `ICUAC-2.1.3-en.us.jar`：默认英文。
 
 两个插件 JAR 功能完全一致，仅首次生成配置时的默认语言不同。自动更新不会覆盖服务器已有配置。
 
@@ -199,7 +199,7 @@ Release 不再额外上传源码 JAR 或独立校验文件。完整源码与注�
 | 末地水晶 | 所有游戏模式中，两次攻击短于 `crystal.hit-interval` 时取消水晶伤害；OP 可临时切换仅对自己的运行期绕过。 |
 | 语言 | 提供中文默认和英文默认 JAR，两者带有对应消息与完整官方预设。 |
 | 游戏内消息 | 每一行玩家可见文字均强制粗体，并连续应用 `#00D2FF` → `#3A7BD5` → `#F2C94C` 渐变；纯装饰分割线保持非粗体以确保对齐。 |
-| 后台显示 | 使用统一 ICUAC 前缀与粗体文字；固定宽度双语启动横幅新增 `ICUAC ADMINISTRATION` 版本主标题、中英安全管理副标题及星号章节分隔线，全部内容距左边框一个空格并统一左对齐。 |
+| 后台显示 | 启动横幅使用内部宽度 76 的青色边框且不附加普通消息前缀；`ICUAC ADMINISTRATION` 版本主标题与中英安全管理副标题居中，完整等号线分隔标题区，彩色字段标签和值按固定列左对齐。 |
 | 自动更新 | 启动时检查官方 GitHub Release，选择当前语言 JAR，校验 GitHub SHA-256 摘要并放入下次重启使用的更新目录。 |
 | 调度兼容 | 按任务用途使用兼容 Paper/Folia 的全局、区域、实体与异步调度器。 |
 

@@ -4,6 +4,24 @@ All notable changes are documented here. English is listed first, followed by Ch
 
 所有重要更新均记录于此；英文在前，中文在后。
 
+## [2.1.3] - 2026-07-30
+
+### English
+
+#### Changed
+
+- Reworked the startup banner to match the provided console layout with a 76-character aqua frame and full-width equals dividers.
+- Centered the `ICUAC ADMINISTRATION` version heading and bilingual security-control subtitle while keeping field rows left-aligned in fixed label/value columns.
+- Removed the normal `[ICUAC] »` message prefix from banner rows only, aligned the field colons, and changed the privacy line to `Open source. No telemetry or server-data upload.`
+
+### 中文
+
+#### 调整
+
+- 按提供的后台截图重做启动横幅，使用内部宽度 76 的青色边框及完整等号分隔线。
+- `ICUAC ADMINISTRATION` 版本主标题与中英安全管理副标题改为居中，字段行则按固定标签和值列左对齐。
+- 仅横幅行移除普通 `[ICUAC] »` 消息前缀，对齐所有字段冒号，并将隐私声明改为 `Open source. No telemetry or server-data upload.`
+
 ## [2.1.2] - 2026-07-30
 
 ### English
@@ -208,6 +226,7 @@ All notable changes are documented here. English is listed first, followed by Ch
 - 新增仅 OP 使用的 `/crystallimit bypass` 运行期切换。
 - ICUAC 白名单变化时即时刷新客户端命令树。
 
+[2.1.3]: https://github.com/Lazyzouo/ICUAC/releases/tag/v2.1.3
 [2.1.2]: https://github.com/Lazyzouo/ICUAC/releases/tag/v2.1.2
 [2.1.1]: https://github.com/Lazyzouo/ICUAC/releases/tag/v2.1.1
 [2.1.0]: https://github.com/Lazyzouo/ICUAC/releases/tag/v2.1.0
