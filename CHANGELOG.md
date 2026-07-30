@@ -4,6 +4,26 @@ All notable changes are documented here. English is listed first, followed by Ch
 
 所有重要更新均记录于此；英文在前，中文在后。
 
+## [2.1.4] - 2026-07-30
+
+### English
+
+#### Changed
+
+- Removed leading whitespace from every player-visible message line at send time, so help titles, command entries, warnings, and all other in-game plugin text begin at the left edge, including messages loaded from existing server configurations.
+- Removed the literal indentation from the official Chinese and English help-menu presets while preserving the existing bold and aqua-blue-gold gradient rendering.
+- Kept the console startup banner and other console alignment unchanged.
+- Established `v2.1.4` as the GitHub Release retention baseline; older Releases and matching tags are removed, while `v2.1.4` and later versions remain available.
+
+### 中文
+
+#### 调整
+
+- 所有玩家可见消息在发送时统一移除行首空白，使帮助标题、命令项、警告及其他游戏内插件文字均从左边缘开始；服务器现有配置中的消息同样生效。
+- 移除官方中英文帮助菜单预设中的固定缩进，并保留现有粗体与青蓝金渐变效果。
+- 后台启动横幅及其他后台对齐方式保持不变。
+- 将 `v2.1.4` 设为 GitHub Release 保留基线；删除更早的 Release 及对应标签，仅保留 `v2.1.4` 与后续版本。
+
 ## [2.1.3] - 2026-07-30
 
 ### English
@@ -226,6 +246,7 @@ All notable changes are documented here. English is listed first, followed by Ch
 - 新增仅 OP 使用的 `/crystallimit bypass` 运行期切换。
 - ICUAC 白名单变化时即时刷新客户端命令树。
 
+[2.1.4]: https://github.com/Lazyzouo/ICUAC/releases/tag/v2.1.4
 [2.1.3]: https://github.com/Lazyzouo/ICUAC/releases/tag/v2.1.3
 [2.1.2]: https://github.com/Lazyzouo/ICUAC/releases/tag/v2.1.2
 [2.1.1]: https://github.com/Lazyzouo/ICUAC/releases/tag/v2.1.1

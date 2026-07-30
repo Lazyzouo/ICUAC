@@ -28,3 +28,9 @@
 - Release asset names are immutable and must be exactly `ICUAC-MAJOR.MINOR.PATCH-en.us.jar` and `ICUAC-MAJOR.MINOR.PATCH-zh.cn.jar`.
 - Never rename a built JAR during upload and never publish aliases such as `latest.jar`, source JARs, checksum sidecars, or additional downloadable binaries.
 - The Release workflow must run `scripts/verify-release.ps1` before publishing and fail if either required JAR is missing or any unexpected JAR exists.
+
+## Release Retention
+
+- Keep GitHub Releases and matching Git tags for `v2.1.4` and every later version.
+- Delete every GitHub Release and matching Git tag older than `v2.1.4`; do not retain legacy downloadable versions.
+- Never remove `v2.1.4` or a later version as part of routine release cleanup.

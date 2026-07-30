@@ -248,17 +248,17 @@ messages:
   # 帮助菜单（沿用 WRTP 的分区逻辑，采用 ICUAC 独立的安全控制台样式）
   help-menu:
     - '&#FF5E62--------&#FF9966--------&#F2C94C ✧ &#FF9966--------&#FF5E62--------'
-    - '   &#FF5E62&l{name} &8┃ &7版本 &f&l{version} &8┃ &7作者 &#F2C94C&l{author}'
+    - '&#FF5E62&l{name} &8┃ &7版本 &f&l{version} &8┃ &7作者 &#F2C94C&l{author}'
     - '&#FF5E62-------&#FF9966-------&#F2C94C-------&#FF9966-------&#FF5E62-------'
     - '&#FF5E62&l[01] &#F2C94C&l白名单管控'
-    - '  &#FF9966› &f/icuac add <玩家> &8- &7添加安全检查豁免'
-    - '  &#FF9966› &f/icuac remove <玩家> &8- &7移除安全检查豁免'
-    - '  &#FF9966› &f/icuac list &8- &7查看当前白名单'
+    - '&#FF9966› &f/icuac add <玩家> &8- &7添加安全检查豁免'
+    - '&#FF9966› &f/icuac remove <玩家> &8- &7移除安全检查豁免'
+    - '&#FF9966› &f/icuac list &8- &7查看当前白名单'
     - '&#FF5E62&l[02] &#F2C94C&l插件维护'
-    - '  &#FF9966› &f/crystallimit bypass &8- &7切换水晶攻击间隔限制'
-    - '  &#FF9966› &f/crystalreload &8- &7重载水晶攻击间隔配置'
-    - '  &#FF9966› &f/icuac reload &8- &7重载配置与安全组件'
-    - '  &#FF9966› &f/icuac help &8- &7显示本帮助菜单'
+    - '&#FF9966› &f/crystallimit bypass &8- &7切换水晶攻击间隔限制'
+    - '&#FF9966› &f/crystalreload &8- &7重载水晶攻击间隔配置'
+    - '&#FF9966› &f/icuac reload &8- &7重载配置与安全组件'
+    - '&#FF9966› &f/icuac help &8- &7显示本帮助菜单'
     - '&#FF5E62--------&#FF9966--------&#F2C94C ✧ &#FF9966--------&#FF5E62--------'
 
   # 白名单操作提示

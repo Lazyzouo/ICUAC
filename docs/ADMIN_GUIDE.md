@@ -1,6 +1,6 @@
 # ICUAC Administrator Guide / ICUAC 管理员指南
 
-> Version: 2.1.3
+> Version: 2.1.4
 > Tested: Paper/Folia 1.21.11
 > Java: 21
 
@@ -63,7 +63,7 @@ At startup the updater calls the official `Lazyzouo/ICUAC` latest-release endpoi
 
 ### Console Presentation
 
-Startup prints a bilingual banner with an internal width of 76 characters. The aqua top, middle, and bottom borders are full-width equals lines. The `ICUAC ADMINISTRATION` version heading and `SERVER SECURITY CONTROL / 服务器安全管理` subtitle are centered using CJK-aware display widths; version, author, tested baseline, language, GitHub, and privacy rows are left-aligned, their labels are padded to a fixed 14-character display width, and their colons share one column. Banner rows are sent without the normal `[ICUAC] »` prefix so the frame remains aligned; startup status and updater notices retain that prefix and their semantic colors. Every player-visible message line remains bold with the continuous `#00D2FF` → `#3A7BD5` → `#F2C94C` gradient, while pure decorative dividers remain unbold.
+Startup prints a bilingual banner with an internal width of 76 characters. The aqua top, middle, and bottom borders are full-width equals lines. The `ICUAC ADMINISTRATION` version heading and `SERVER SECURITY CONTROL / 服务器安全管理` subtitle are centered using CJK-aware display widths; version, author, tested baseline, language, GitHub, and privacy rows are left-aligned, their labels are padded to a fixed 14-character display width, and their colons share one column. Banner rows are sent without the normal `[ICUAC] »` prefix so the frame remains aligned; startup status and updater notices retain that prefix and their semantic colors. Every player-visible line has leading whitespace removed at send time, so help titles, command entries, warnings, and other plugin messages begin at the left edge even when an existing configuration contains indentation. Player text remains bold with the continuous `#00D2FF` → `#3A7BD5` → `#F2C94C` gradient, while pure decorative dividers remain unbold.
 
 ### Deployment Checklist
 
@@ -136,7 +136,7 @@ ICUAC 白名单会绕过命令拦截/Tab 隐藏、背包安全、NBT、附魔、
 
 ### 后台显示
 
-启动时会输出内部宽度为 76 个字符的双语横幅，顶部、中部与底部均使用完整等号组成的青色边框。`ICUAC ADMINISTRATION` 版本主标题和 `SERVER SECURITY CONTROL / 服务器安全管理` 副标题按中英文显示宽度居中；版本、作者、测试基线、语言、GitHub 与隐私声明行左对齐，字段标签补齐到 14 个显示宽度，所有冒号位于同一列。横幅行不附加普通 `[ICUAC] »` 前缀以保持边框对齐，启动状态与更新器通知则继续保留该前缀及状态颜色。所有玩家可见消息仍使用粗体与连续的 `#00D2FF` → `#3A7BD5` → `#F2C94C` 渐变，纯装饰分割线保持非粗体。
+启动时会输出内部宽度为 76 个字符的双语横幅，顶部、中部与底部均使用完整等号组成的青色边框。`ICUAC ADMINISTRATION` 版本主标题和 `SERVER SECURITY CONTROL / 服务器安全管理` 副标题按中英文显示宽度居中；版本、作者、测试基线、语言、GitHub 与隐私声明行左对齐，字段标签补齐到 14 个显示宽度，所有冒号位于同一列。横幅行不附加普通 `[ICUAC] »` 前缀以保持边框对齐，启动状态与更新器通知则继续保留该前缀及状态颜色。所有玩家可见消息在发送时统一移除行首空白，因此帮助标题、命令项、警告及其他插件消息均从左边缘开始，服务器现有配置中的缩进也会自动移除。玩家文字继续使用粗体与连续的 `#00D2FF` → `#3A7BD5` → `#F2C94C` 渐变，纯装饰分割线保持非粗体。
 
 ### 部署检查
 

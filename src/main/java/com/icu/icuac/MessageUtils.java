@@ -26,7 +26,7 @@ public final class MessageUtils {
         if (message == null || message.isEmpty()) return "";
         String prefix = plugin.getLanguageManager().getMessageString("prefix", DEFAULT_PREFIX);
         if (prefix == null || prefix.isBlank()) prefix = DEFAULT_PREFIX;
-        String formatted = replace(message.replace("{prefix}", prefix), replacements);
+        String formatted = replace(message.replace("{prefix}", prefix), replacements).stripLeading();
         return LegacyComponentSerializer.legacySection().serialize(deserialize(formatted, true));
     }
 
@@ -49,7 +49,9 @@ public final class MessageUtils {
         if (message == null || message.isEmpty()) return;
         boolean playerVisible = sender instanceof Player;
         for (String line : message.split("\\n", -1)) {
-            sender.sendMessage(deserialize(replace(line, replacements), playerVisible));
+            String formattedLine = replace(line, replacements);
+            if (playerVisible) formattedLine = formattedLine.stripLeading();
+            sender.sendMessage(deserialize(formattedLine, playerVisible));
         }
     }
 
