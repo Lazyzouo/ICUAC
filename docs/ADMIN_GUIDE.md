@@ -1,6 +1,6 @@
 # ICUAC Administrator Guide / ICUAC 管理员指南
 
-> Version: 2.1.4
+> Version: 2.2.0
 > Tested: Paper/Folia 1.21.11
 > Java: 21
 
@@ -22,6 +22,20 @@ ICUAC combines preventive checks with destructive remediation. Depending on the 
 - Server update directory: receives a verified new JAR when auto-download succeeds.
 
 Repository presets are official generic defaults. They are not intended to contain a specific server's world names or private settings.
+
+### Configuration Migration
+
+Never delete `plugins/ICUAC/config.yml` when updating ICUAC. Replace the JAR and restart the server; startup and `/icuac reload` both run the same schema-aware migration.
+
+- `config-version` is managed by ICUAC and records the public configuration schema.
+- Existing values, lists, messages, explicit empty strings, comments, and custom keys are preserved. Only missing official defaults and missing official comments are added.
+- Migration selects the bundled Chinese or English template from the existing `language` value, regardless of which language JAR was installed for the update.
+- A legacy boolean at a path whose new official section contains `enabled` is moved to that `enabled` child without changing its value.
+- Before any write, the exact original file is copied to `plugins/ICUAC/backups/config-before-v<schema>-<timestamp>-<id>.yml`.
+- The updated YAML is written to a temporary file, parsed again for validation, and atomically replaces `config.yml` where the filesystem supports it.
+- Invalid YAML or a write failure leaves the original file in place and prevents startup/reload from continuing with a partially migrated configuration.
+- An unknown scalar/section conflict is preserved and reported; ICUAC does not guess or overwrite it. Obsolete custom or former keys are not deleted automatically.
+- A configuration with a higher `config-version` than the running plugin is preserved without downgrade writes.
 
 ### Release Authenticity
 
@@ -53,7 +67,7 @@ Adding or removing an online player refreshes the client's command tree immediat
 
 ### Reload Boundaries
 
-Use `/icuac reload` for normal configuration changes. It reloads language, whitelist, game-mode settings, item/NBT/effect/stack settings and crystal timing. The global inventory scheduler period is created only during plugin startup; changing `global-settings.inventory-check-interval-ticks` requires a restart.
+Use `/icuac reload` for normal configuration changes. It first performs the same safe configuration migration used at startup, then reloads language, whitelist, game-mode settings, item/NBT/effect/stack settings and crystal timing. The global inventory scheduler period is created only during plugin startup; changing `global-settings.inventory-check-interval-ticks` requires a restart.
 
 `/crystalreload` reloads the YAML file and crystal interval, but does not explicitly rebuild every cached module. Use `/icuac reload` for changes outside the crystal section.
 
@@ -96,6 +110,20 @@ ICUAC 同时包含预防拦截与破坏性处置。不同模块可能取消事�
 
 仓库中的配置是官方通用预设，不应保存具体服务器的世界名或私人参数。
 
+### 配置自动迁移
+
+更新 ICUAC 时不要删除 `plugins/ICUAC/config.yml`。只需替换 JAR 并重启服务器；插件启动和 `/icuac reload` 都会执行同一套按结构迁移。
+
+- `config-version` 由 ICUAC 自动维护，用于标记公开配置结构版本。
+- 现有参数、列表、消息、主动设置的空字符串、注释和自定义键全部保留，只补入缺失的官方默认项与注释。
+- 迁移模板按现有 `language` 选择中英文，不受本次安装的语言 JAR 影响。
+- 旧配置若在新官方结构中对应含 `enabled` 的分节，原布尔值会移入 `enabled`，值本身不改变。
+- 每次实际写入前，原文件会完整备份到 `plugins/ICUAC/backups/config-before-v<结构版本>-<时间>-<编号>.yml`。
+- 新 YAML 先写入临时文件并重新解析验证；文件系统支持时再以原子方式替换 `config.yml`。
+- YAML 无效或写入失败时不会覆盖原文件，启动或重载也不会带着半迁移配置继续执行。
+- 无法安全推断的标量/分节类型冲突保持原样并在后台提示；旧自定义键或已废弃键不会被自动删除。
+- 若配置的 `config-version` 高于当前插件，插件不会执行降级写入。
+
 ### 发行文件真伪
 
 请只使用官方 `Lazyzouo/ICUAC` GitHub Release 中名称精确为 `ICUAC-<版本>-en.us.jar` 或 `ICUAC-<版本>-zh.cn.jar` 的资源。Source code 源码压缩包不是可安装插件；重命名文件、修改版、第三方镜像及转载文件不属于官方发行范围，也无法由 ICUAC 官方发布流程验证。官方自动化会校验这两个构建文件的精确名称并保持原名上传；缺失、改名、多余、源码、别名或校验文件都会让 Release 构建失败。
@@ -126,7 +154,7 @@ ICUAC 白名单会绕过命令拦截/Tab 隐藏、背包安全、NBT、附魔、
 
 ### 重载边界
 
-常规配置修改使用 `/icuac reload`。全局背包扫描周期只在插件启动时创建，因此修改 `global-settings.inventory-check-interval-ticks` 后必须重启。
+常规配置修改使用 `/icuac reload`。该命令会先执行与启动时相同的安全迁移，再重载语言、白名单与各安全模块。全局背包扫描周期只在插件启动时创建，因此修改 `global-settings.inventory-check-interval-ticks` 后必须重启。
 
 `/crystalreload` 主要更新水晶间隔。其他模块修改仍应使用 `/icuac reload`。
 

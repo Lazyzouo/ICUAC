@@ -3,7 +3,7 @@ plugins {
 }
 
 group = 'com.icu.icuac'
-version = '2.1.4'
+version = '2.2.0'
 def pluginAuthor = 'Lazyz'
 
 repositories {
@@ -16,6 +16,10 @@ repositories {
 
 dependencies {
     compileOnly 'io.papermc.paper:paper-api:1.21-R0.1-SNAPSHOT'
+    testImplementation 'io.papermc.paper:paper-api:1.21-R0.1-SNAPSHOT'
+    testImplementation platform('org.junit:junit-bom:5.11.4')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
 
 def targetJavaVersion = 21
@@ -52,6 +56,10 @@ processResources {
     from('presets/config.zh_CN.yml') {
         rename { 'config.yml' }
     }
+    from('presets') {
+        include 'config.zh_CN.yml', 'config.en_US.yml'
+        into 'defaults'
+    }
 }
 
 tasks.named('jar') {
@@ -73,4 +81,8 @@ tasks.register('englishJar', Jar) {
 
 tasks.named('assemble') {
     dependsOn tasks.named('englishJar')
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
 }

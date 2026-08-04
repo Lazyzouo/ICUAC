@@ -1,6 +1,6 @@
 # Configuration Reference / 配置参考
 
-> ICUAC 2.1.4 · Paper/Folia 1.21.11 · Java 21
+> ICUAC 2.2.0 · Paper/Folia 1.21.11 · Java 21
 
 ## English
 
@@ -8,11 +8,23 @@
 
 | Path | Official default | Meaning |
 | --- | --- | --- |
+| `config-version` | `1` | ICUAC-managed schema metadata. Do not edit manually. |
 | `language` | `zh_CN` or `en_US` by artifact | UI language. Supported values: `zh_CN`, `en_US`. |
 | `updates.enabled` | `true` | Check GitHub Releases during startup. |
 | `updates.auto-download` | `true` | Verify and stage newer releases automatically. |
 | `global-settings.inventory-check-interval-ticks` | `1` | Online inventory scan period. Restart required after changing. |
 | `crystal.hit-interval` | `200` | Minimum end-crystal attack interval in milliseconds. |
+
+### Migration Rules
+
+- Updating requires replacing the JAR and restarting; `config.yml` must not be deleted.
+- Startup and `/icuac reload` compare the existing file with the official preset matching its `language`.
+- Existing scalar values, lists, messages, empty strings, comments, and unknown custom keys win over defaults. Missing official leaves and missing comments are appended.
+- Lists are preserved as complete administrator values; migration does not merge or reorder individual list entries.
+- A legacy boolean is moved to a new section's `enabled` child only when that mapping is unambiguous.
+- Before a changed file is written, the original is copied under `plugins/ICUAC/backups`. The replacement is parsed from a temporary file before installation.
+- Invalid YAML aborts migration. Unknown type conflicts and obsolete keys remain untouched and are reported instead of deleted.
+- A file whose `config-version` is newer than the running plugin is never downgraded.
 
 ### Command Protection
 
@@ -67,11 +79,23 @@ Chinese mode reads `messages` from `config.yml`, preserving legacy customization
 
 | 路径 | 官方默认值 | 说明 |
 | --- | --- | --- |
+| `config-version` | `1` | ICUAC 管理的配置结构元数据，请勿手动修改。 |
 | `language` | 依发行物为 `zh_CN` 或 `en_US` | 界面语言，仅支持这两个值。 |
 | `updates.enabled` | `true` | 启动时检查 GitHub Release。 |
 | `updates.auto-download` | `true` | 自动校验并暂存新版本。 |
 | `global-settings.inventory-check-interval-ticks` | `1` | 在线背包扫描周期；修改后需重启。 |
 | `crystal.hit-interval` | `200` | 末地水晶最短攻击间隔，单位毫秒。 |
+
+### 迁移规则
+
+- 更新时只需替换 JAR 并重启，禁止也无需删除 `config.yml`。
+- 启动及 `/icuac reload` 会按现有 `language` 选择官方预设，与当前文件进行结构比较。
+- 现有单值、列表、消息、空字符串、注释及未知自定义键优先于默认值；仅追加缺失的官方末端参数和注释。
+- 列表作为管理员的完整设置保留，不会逐项合并、排序或替换。
+- 只有映射明确时，旧布尔值才会移入新分节的 `enabled` 子项。
+- 实际写入前会把原文件备份到 `plugins/ICUAC/backups`，替换文件也必须先通过临时 YAML 解析验证。
+- YAML 无效会中止迁移；未知类型冲突与已废弃键保持原样，只提示而不删除。
+- `config-version` 高于当前插件时绝不降级配置。
 
 ### 命令防护
 

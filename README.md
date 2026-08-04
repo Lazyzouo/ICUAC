@@ -22,7 +22,7 @@ ICUAC applies configurable server-side rules for commands, player state, locatio
 
 The project provides Simplified Chinese and English default packages, Folia-aware scheduling, official generic presets, and an updater that downloads only language-matched GitHub Release assets after verifying GitHub's SHA-256 digest.
 
-> Current version: **2.1.4**
+> Current version: **2.2.0**
 > Tested server version: **Paper/Folia 1.21.11**
 > Required Java version: **21**
 > Author: **Lazyz**
@@ -37,10 +37,10 @@ Official Release retention starts at `v2.1.4`. Releases and matching Git tags ol
 
 | Asset | Default language | Use case |
 | --- | --- | --- |
-| `ICUAC-2.1.4-zh.cn.jar` | Simplified Chinese (`zh_CN`) | Chinese server administrators |
-| `ICUAC-2.1.4-en.us.jar` | English (`en_US`) | English server administrators |
+| `ICUAC-2.2.0-zh.cn.jar` | Simplified Chinese (`zh_CN`) | Chinese server administrators |
+| `ICUAC-2.2.0-en.us.jar` | English (`en_US`) | English server administrators |
 
-Both plugin JARs contain the same features. The only difference is the first-run language preset. Existing server configuration is preserved during updates.
+Both plugin JARs contain the same features. The only difference is the first-run language preset. To update, replace the JAR and restart the server; do not delete `config.yml`. ICUAC preserves existing administrator values and custom keys, adds only missing official defaults, and creates a backup before any migration write.
 
 No source JAR or standalone checksum file is uploaded as a Release asset. The complete source and comments remain available from the [`main`](https://github.com/Lazyzouo/ICUAC/tree/main) branch.
 
@@ -61,6 +61,7 @@ No source JAR or standalone checksum file is uploaded as a Release asset. The co
 | Potion effects | Removes an entire active effect when its configured duration or amplifier limit is exceeded. |
 | End crystals | Cancels crystal damage attempts made sooner than `crystal.hit-interval` in every game mode; an OP can toggle a runtime-only personal bypass. |
 | Languages | Provides Chinese-default and English-default JARs with matching messages and complete official presets. |
+| Configuration migration | Updates `config.yml` automatically without deleting it: existing values and custom keys remain unchanged, missing defaults are added, legacy booleans are migrated safely, and the original file is backed up before writing. |
 | Player messages | Removes leading whitespace from every in-game line at send time so help titles, command entries, warnings, and other plugin text start at the left edge. Text remains bold with a continuous `#00D2FF` → `#3A7BD5` → `#F2C94C` gradient; pure decorative divider lines stay unbold. |
 | Console presentation | Uses a 76-character aqua frame without the normal message prefix, centers the `ICUAC ADMINISTRATION` version heading and bilingual security-control subtitle, separates the header with a full-width equals line, and aligns all colored field labels and values in fixed columns. |
 | Automatic updates | Checks the official GitHub Release at startup, selects the active-language JAR, verifies GitHub's SHA-256 digest, and stages the file for the next restart. |
@@ -75,6 +76,8 @@ No source JAR or standalone checksum file is uploaded as a Release asset. The co
 5. Review `plugins/ICUAC/config.yml` before opening the server to players.
 6. Use `/icuac reload` after supported configuration changes.
 
+For later updates, replace only the plugin JAR and restart. ICUAC migrates the existing configuration in place and stores the pre-migration file under `plugins/ICUAC/backups`; deleting `config.yml` would discard administrator settings and is neither required nor recommended.
+
 The official preset is intentionally generic. Personal server parameters remain in the runtime `plugins/ICUAC/config.yml` and are not part of this repository.
 
 ## Commands
@@ -85,7 +88,7 @@ The official preset is intentionally generic. Personal server parameters remain 
 | `/icuac add <player>` | OP | Add a player to the global ICUAC bypass list. |
 | `/icuac remove <player>` | OP | Remove a player from the bypass list. |
 | `/icuac list` | OP | List bypassed player names. |
-| `/icuac reload` | OP | Reload configuration, language, whitelist, and security modules. |
+| `/icuac reload` | OP | Safely migrate, then reload configuration, language, whitelist, and security modules. |
 | `/crystalreload` | `crystalpvp.reload` | Reload the end-crystal attack interval. |
 | `/crystallimit bypass` | OP | Toggle personal end-crystal cooldown bypass. |
 
@@ -154,7 +157,7 @@ ICUAC 针对命令、玩家状态、坐标、物品、药水效果和末地水�
 
 项目提供简体中文与英文默认包、Folia 调度兼容、官方通用参数预设，以及只下载当前语言 GitHub Release 资产并校验 GitHub SHA-256 摘要的自动更新器。
 
-> 当前版本：**2.1.4**
+> 当前版本：**2.2.0**
 > 已测试服务端版本：**Paper/Folia 1.21.11**
 > Java 要求：**21**
 > 作者：**Lazyz**
@@ -167,10 +170,10 @@ ICUAC 针对命令、玩家状态、坐标、物品、药水效果和末地水�
 
 官方 Release 从 `v2.1.4` 起保留；早于 `v2.1.4` 的 Release 及对应 Git 标签不再保留。
 
-- `ICUAC-2.1.4-zh.cn.jar`：默认简体中文。
-- `ICUAC-2.1.4-en.us.jar`：默认英文。
+- `ICUAC-2.2.0-zh.cn.jar`：默认简体中文。
+- `ICUAC-2.2.0-en.us.jar`：默认英文。
 
-两个插件 JAR 功能完全一致，仅首次生成配置时的默认语言不同。自动更新不会覆盖服务器已有配置。
+两个插件 JAR 功能完全一致，仅首次生成配置时的默认语言不同。更新时只需替换 JAR 并重启，不要删除 `config.yml`。ICUAC 会保留管理员现有参数与自定义键，只补齐缺失的官方默认项，并在迁移写入前自动备份原文件。
 
 Release 不再额外上传源码 JAR 或独立校验文件。完整源码与注释继续保留在 [`main`](https://github.com/Lazyzouo/ICUAC/tree/main) 分支。
 
@@ -182,6 +185,8 @@ Release 不再额外上传源码 JAR 或独立校验文件。完整源码与注�
 4. 启动一次服务器生成官方默认配置。
 5. 开服前检查 `plugins/ICUAC/config.yml`。
 6. 修改支持热重载的配置后执行 `/icuac reload`。
+
+后续更新只替换插件 JAR 并重启即可。ICUAC 会原地迁移现有配置，并把迁移前文件保存到 `plugins/ICUAC/backups`；删除 `config.yml` 会丢失管理员参数，既不需要也不建议这样做。
 
 仓库只维护官方参数预设。服务器的个人世界名、阈值和消息配置位于运行目录，不会由 GitHub 仓库同步。
 
@@ -202,6 +207,7 @@ Release 不再额外上传源码 JAR 或独立校验文件。完整源码与注�
 | 药水效果 | 生效时间或效果等级超过配置上限时，移除整个对应效果。 |
 | 末地水晶 | 所有游戏模式中，两次攻击短于 `crystal.hit-interval` 时取消水晶伤害；OP 可临时切换仅对自己的运行期绕过。 |
 | 语言 | 提供中文默认和英文默认 JAR，两者带有对应消息与完整官方预设。 |
+| 配置自动迁移 | 无需删除 `config.yml` 即可更新：现有参数与自定义键保持不变，自动补齐缺失项、安全迁移旧布尔结构，并在写入前备份原文件。 |
 | 游戏内消息 | 每一行玩家可见消息在发送时移除行首空白，使帮助标题、命令项、警告及其他插件文字均从左边缘开始。文字继续强制粗体并应用连续的 `#00D2FF` → `#3A7BD5` → `#F2C94C` 渐变，纯装饰分割线保持非粗体。 |
 | 后台显示 | 启动横幅使用内部宽度 76 的青色边框且不附加普通消息前缀；`ICUAC ADMINISTRATION` 版本主标题与中英安全管理副标题居中，完整等号线分隔标题区，彩色字段标签和值按固定列左对齐。 |
 | 自动更新 | 启动时检查官方 GitHub Release，选择当前语言 JAR，校验 GitHub SHA-256 摘要并放入下次重启使用的更新目录。 |

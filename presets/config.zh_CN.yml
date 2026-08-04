@@ -4,6 +4,9 @@
 #                                                                              #
 # ============================================================================ #
 
+# 配置结构版本由 ICUAC 自动维护，请勿手动修改
+config-version: 1
+
 # 用户界面语言：zh_CN（简体中文）或 en_US（English）
 language: zh_CN
 
@@ -232,6 +235,7 @@ messages:
   command-add-usage: '{prefix}&8[&e!&8] &e&l参数错误 &8| &7用法: &f/icuac add <玩家ID>'
   command-remove-usage: '{prefix}&8[&e!&8] &e&l参数错误 &8| &7用法: &f/icuac remove <玩家ID>'
   reload-success: '{prefix}&8[&a+&8] &a&l重载完成 &8| &7配置文件与全部安全组件已重新加载。'
+  reload-failed: '{prefix}&8[&c!&8] &c&l重载失败 &8| &7配置文件无效或无法安全迁移，原文件未被覆盖。'
   crystal-limit-usage: '{prefix}&8[&e!&8] &e&l参数错误 &8| &7用法: &f/crystallimit bypass'
   crystal-limit-bypassed: '{prefix}&8[&a+&8] &a&l限制解除 &8| &7你已绕过末地水晶攻击间隔限制。'
   crystal-limit-restored: '{prefix}&8[&e!&8] &e&l限制恢复 &8| &7你将重新受到末地水晶攻击间隔限制。'

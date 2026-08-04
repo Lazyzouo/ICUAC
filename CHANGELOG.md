@@ -4,6 +4,38 @@ All notable changes are documented here. English is listed first, followed by Ch
 
 所有重要更新均记录于此；英文在前，中文在后。
 
+## [2.2.0] - 2026-08-04
+
+### English
+
+#### Added
+
+- Added schema-aware `config.yml` migration during startup and `/icuac reload`; administrators can update the plugin without deleting their configuration.
+- Added automatic pre-migration backups under `plugins/ICUAC/backups` and validated temporary-file writes with atomic replacement where supported.
+- Added six automated tests covering value/empty-string preservation, missing defaults, repeat-run idempotence, legacy boolean migration, type conflicts, newer-schema downgrade protection, and matching bilingual preset schemas.
+
+#### Changed
+
+- Existing administrator values, lists, messages, empty strings, comments, and custom keys are preserved; only missing official defaults and comments are added.
+- Legacy boolean sections with an official `enabled` child are converted without changing the administrator's boolean value. Unknown type conflicts remain untouched and are reported instead of overwritten.
+- Both JARs now include both official language presets internally, allowing migration defaults to follow the configured `language` rather than the downloaded JAR language.
+- Added managed `config-version` metadata. Configurations created by a newer plugin are never downgraded or rewritten by an older schema.
+
+### 中文
+
+#### 新增
+
+- 启动及执行 `/icuac reload` 时自动按结构迁移 `config.yml`；管理员更新插件后不再需要删除配置文件。
+- 迁移前自动在 `plugins/ICUAC/backups` 保存原文件，并先写入临时文件完成 YAML 校验；系统支持时使用原子替换。
+- 新增六项自动化测试，覆盖现有值/空字符串保留、缺失项补齐、重复运行幂等、旧布尔结构迁移、类型冲突、新版配置防降级及双语预设结构一致性。
+
+#### 调整
+
+- 现有参数、列表、消息、空字符串、注释及自定义键全部保留，只补入缺失的官方默认项与注释。
+- 旧布尔配置在官方结构含 `enabled` 时无损迁移，管理员原布尔值不变；无法安全判断的类型冲突保持原样并输出提示，绝不强制覆盖。
+- 两个语言 JAR 均内置中英文官方预设，迁移时按 `language` 选择模板，不受本次下载的 JAR 默认语言影响。
+- 新增由插件管理的 `config-version`；旧插件遇到更高版本配置时不会降级或重写。
+
 ## [2.1.4] - 2026-07-30
 
 ### English
@@ -246,6 +278,7 @@ All notable changes are documented here. English is listed first, followed by Ch
 - 新增仅 OP 使用的 `/crystallimit bypass` 运行期切换。
 - ICUAC 白名单变化时即时刷新客户端命令树。
 
+[2.2.0]: https://github.com/Lazyzouo/ICUAC/releases/tag/v2.2.0
 [2.1.4]: https://github.com/Lazyzouo/ICUAC/releases/tag/v2.1.4
 [2.1.3]: https://github.com/Lazyzouo/ICUAC/releases/tag/v2.1.3
 [2.1.2]: https://github.com/Lazyzouo/ICUAC/releases/tag/v2.1.2

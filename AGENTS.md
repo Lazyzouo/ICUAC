@@ -14,6 +14,8 @@
 - Never commit `src/main/resources/config.yml`; it is reserved for personal/local parameters and is ignored by Git.
 - Track public defaults only in `presets/config.zh_CN.yml` and `presets/config.en_US.yml`.
 - Parameter changes must be applied to both presets while preserving language-specific comments and messages.
+- Increment `config-version` in both presets whenever the public configuration structure changes.
+- Configuration migration must preserve existing administrator values and custom keys; never replace a live `config.yml` with an entire preset.
 
 ## Documentation And Publishing
 

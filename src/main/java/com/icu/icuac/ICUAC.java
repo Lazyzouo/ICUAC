@@ -7,6 +7,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.List;
+import java.util.logging.Level;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -30,9 +31,13 @@ public class ICUAC extends JavaPlugin {
     @Override
     public void onEnable() {
         instance = this;
-        saveDefaultConfig();
-        getConfig().options().copyDefaults(true);
-        saveConfig();
+        ConfigMigrator.MigrationResult configMigration;
+        try {
+            configMigration = ConfigMigrator.migrateMainConfig(this);
+        } catch (IllegalStateException exception) {
+            getLogger().log(Level.SEVERE, "ICUAC could not update config.yml safely and will not start.", exception);
+            throw exception;
+        }
         languageManager = new LanguageManager(this);
 
         whitelistManager = new WhitelistManager(this);
@@ -67,6 +72,7 @@ public class ICUAC extends JavaPlugin {
         }, 1L, checkInterval);
 
         printStartupBanner();
+        logConfigMigration(configMigration);
         logLocalized("plugin-enabled", "platform", detectServerPlatform());
         updateChecker = new UpdateChecker(this);
         updateChecker.checkOnStartup();
@@ -207,6 +213,38 @@ public class ICUAC extends JavaPlugin {
 
     public void logConsole(String message) {
         MessageUtils.sendRaw(getServer().getConsoleSender(), CONSOLE_PREFIX + message);
+    }
+
+    void logConfigMigration(ConfigMigrator.MigrationResult result) {
+        ConfigMigrator.MergeSummary summary = result.summary();
+        boolean english = LanguageManager.ENGLISH.equals(languageManager.getLanguage());
+        if (result.skippedNewerVersion()) {
+            if (english) {
+                logConsole("&eConfiguration newer than plugin &8| &fconfig-version "
+                        + summary.previousVersion() + " &7was preserved without modification.");
+            } else {
+                logConsole("&e配置版本高于当前插件 &8| &fconfig-version "
+                        + summary.previousVersion() + " &7已原样保留，未执行降级写入。");
+            }
+            return;
+        }
+        for (String conflict : summary.conflicts()) {
+            if (english) {
+                logConsole("&eConfiguration conflict preserved &8| &7No value was overwritten: &f" + conflict);
+            } else {
+                logConsole("&e配置冲突已保留 &8| &7未覆盖该自定义参数：&f" + conflict);
+            }
+        }
+        if (!result.updated()) return;
+
+        String backupName = result.backup() == null ? "none" : result.backup().getFileName().toString();
+        if (english) {
+            logConsole("&aConfiguration updated &8| &7Existing values preserved; added &f"
+                    + summary.addedKeys() + " &7defaults. Backup: &f" + backupName);
+        } else {
+            logConsole("&a配置已自动更新 &8| &7现有参数均已保留，补齐 &f"
+                    + summary.addedKeys() + " &7项默认配置。备份：&f" + backupName);
+        }
     }
 
     private void logBanner(String message) {

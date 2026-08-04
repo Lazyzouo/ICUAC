@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
+import java.util.logging.Level;
 
 public class CommandHandler implements CommandExecutor, TabCompleter {
     private final ICUAC plugin;
@@ -78,10 +79,16 @@ public class CommandHandler implements CommandExecutor, TabCompleter {
     }
 
     private boolean handleReload(CommandSender sender) {
-        plugin.reloadConfig();
-        plugin.getWhitelistManager().loadWhitelist();
-        plugin.reloadFeatures();
-        MessageUtils.send(sender, plugin, "reload-success");
+        try {
+            ConfigMigrator.MigrationResult migration = ConfigMigrator.migrateMainConfig(plugin);
+            plugin.getWhitelistManager().loadWhitelist();
+            plugin.reloadFeatures();
+            plugin.logConfigMigration(migration);
+            MessageUtils.send(sender, plugin, "reload-success");
+        } catch (IllegalStateException exception) {
+            plugin.getLogger().log(Level.SEVERE, "Failed to reload config.yml safely.", exception);
+            MessageUtils.send(sender, plugin, "reload-failed");
+        }
         return true;
     }
 
